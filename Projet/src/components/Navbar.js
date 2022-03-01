@@ -1,11 +1,17 @@
 import './Navbar.css';
-import React from 'react'
+import React, {useState} from 'react'
 
 function Navbar(){
     return(
-        <div>
-
-        </div>
+        <>
+            <nav classname="navbar">
+                <div classname="navbar-container">
+                    <Link to="/" className="navbar-Log">
+                    Test    
+                    </Link> 
+                </div>
+            </nav>
+        </>
     )
 }
 
