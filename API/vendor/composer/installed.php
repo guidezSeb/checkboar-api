@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'da7f4f670cfa219d85f3f5c9be058ce21bdf1212',
+        'reference' => '4562e0c1b064dec463777f5787346d8951b9232d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'da7f4f670cfa219d85f3f5c9be058ce21bdf1212',
+            'reference' => '4562e0c1b064dec463777f5787346d8951b9232d',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -524,7 +524,7 @@
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
             'reference' => '95440409896f90a5f85db07a32b517ecec17fa4c',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'symfony/property-access' => array(
             'pretty_version' => 'v6.0.5',
@@ -638,7 +638,7 @@
             'install_path' => __DIR__ . '/../symfony/web-server-bundle',
             'aliases' => array(),
             'reference' => '8cbf9d741b57f4dc298478768865d2e8385552c0',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'willdurand/jsonp-callback-validator' => array(
             'pretty_version' => 'v2.0.0',
