@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\ElementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: ElementRepository::class)]
+#[ApiResource]
 class Element
 {
     #[ORM\Id]

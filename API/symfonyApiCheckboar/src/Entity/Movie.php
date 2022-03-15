@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\MovieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
+#[ApiResource]
 class Movie
 {
     #[ORM\Id]
