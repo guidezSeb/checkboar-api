@@ -15,12 +15,12 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/mangalist' component={MangaList} />
-          <Route path='/movielist' component={MovieList} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/booklist' component={BookList} />
-          <Route path='/animelist' component={AnimeList} />
+         <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/mangalist" element={<MangaList/>}/>
+          <Route exact path="/movielist" element={<MovieList/>}/>
+          <Route exact path="/profile" element={<Profile/>}/>
+          <Route exact path="/booklist" element={<BookList/>}/>
+          <Route exact path="/animelist" element={<AnimeList/>}/>
         </Routes>
       </Router>
     </>

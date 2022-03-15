@@ -32,15 +32,16 @@
   }
   
   .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
+    /* display: grid; */
+    /* grid-template-columns: repeat(6, auto);*/
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 60vw;
     justify-content: end;
     background-color: #34495e;
-    padding-right: 80%;
+    margin: 0 auto;
+    display: flex;
+    place-content: center;
   }
 
   .nav-item {
