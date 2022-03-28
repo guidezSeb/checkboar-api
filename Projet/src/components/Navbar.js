@@ -27,7 +27,7 @@ function Navbar(){
             <nav classname="navbar">
                 <div classname="navbar-container">
                     <Link to='/' className='navbar-logo'>
-                        CheckBoar <img src='./Images/logo_large.png'/>
+                        <img style={{width:100, height:100}} src={require('../Images/logo_large.svg').default}/>
                     </Link>
                 <div classname='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
