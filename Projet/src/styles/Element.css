@@ -1,0 +1,51 @@
+.Titre-page-produit{
+    color:#34495e;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-bottom: 1%;
+  }
+  
+  .BookList{
+    background-color: #DDCECE;
+  }
+
+  .MangaList{
+    background-color: #DDD9CE;
+  }
+
+  .AnimeList{
+    background-color: #CEDDD0;
+  }
+
+  .MovieList{
+    background-color: #D4CEDD;
+  }
+
+  .tableau{
+      background-color: #34495e;
+      margin-left: 5%;
+      position:sticky;
+      border-radius:50px;
+      margin-right: 5%;
+      width: 100%;
+  }
+
+th{
+    position: sticky;
+    top: 0;
+    color:#e2d49e;
+    padding-left: 20%;
+    text-align: center;
+    height: 70px;
+    vertical-align: top;
+  }
+
+  td{
+    position: sticky;
+    top: 0;
+    color:#e2d49e;
+    padding-left: 20%;
+    text-align: center;
+    height: 70px;
+    vertical-align: top;
+  }

@@ -1,18 +1,13 @@
+*{
+  margin:0;
+  box-sizing: border-box;
+  padding:0;
+}
+
 .App {
   text-align: center;
   background-color: #34495e;
-}
 
-.Titre-page-produit{
-  color:#34495e;
-}
-
-.entetes-page-produit{
-  color:#e2d49e;
-}
-
-.BookList{
-  background-color: #DDCECE;
 }
 
 .App-logo {
