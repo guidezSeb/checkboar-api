@@ -3,6 +3,18 @@
   background-color: #34495e;
 }
 
+.Titre-page-produit{
+  color:#34495e;
+}
+
+.entetes-page-produit{
+  color:#e2d49e;
+}
+
+.BookList{
+  background-color: #DDCECE;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -27,17 +27,12 @@ function Navbar(){
             <nav classname="navbar">
                 <div classname="navbar-container">
                     <Link to='/' className='navbar-logo'>
-                        <img style={{width:100, height:100}} src={require('../Images/logo_large.svg').default}/>
+                        <img style={{width:100, height:100}} src={require('../Images/logo_medium.svg').default}/>
                     </Link>
                 <div classname='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                <li className='nav-item'>
-                    <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                        Home
-                    </Link>
-                </li>
                 <li className='nav-item'>
                     <Link to='/profile' className='nav-links' onClick={closeMobileMenu}>
                         Profile
