@@ -27,6 +27,9 @@ class Book
     #[ORM\Column(type: 'integer', nullable: true)]
     private $BookChapterTotal;
 
+    #[ORM\Column(type: 'integer')]
+    private $BookId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Book
     public function setBookChapterTotal(?int $BookChapterTotal): self
     {
         $this->BookChapterTotal = $BookChapterTotal;
+
+        return $this;
+    }
+
+    public function getBookId(): ?int
+    {
+        return $this->BookId;
+    }
+
+    public function setBookId(int $BookId): self
+    {
+        $this->BookId = $BookId;
 
         return $this;
     }

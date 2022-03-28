@@ -18,6 +18,9 @@ class Movie
     #[ORM\Column(type: 'date', nullable: true)]
     private $MovieDateSeen;
 
+    #[ORM\Column(type: 'integer')]
+    private $MovieId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -31,6 +34,18 @@ class Movie
     public function setMovieDateSeen(?\DateTimeInterface $MovieDateSeen): self
     {
         $this->MovieDateSeen = $MovieDateSeen;
+
+        return $this;
+    }
+
+    public function getMovieId(): ?int
+    {
+        return $this->MovieId;
+    }
+
+    public function setMovieId(int $MovieId): self
+    {
+        $this->MovieId = $MovieId;
 
         return $this;
     }

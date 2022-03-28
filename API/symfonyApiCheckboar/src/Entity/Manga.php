@@ -27,6 +27,9 @@ class Manga
     #[ORM\Column(type: 'integer', nullable: true)]
     private $MangaChapterInProgress;
 
+    #[ORM\Column(type: 'integer')]
+    private $MangaId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Manga
     public function setMangaChapterInProgress(?int $MangaChapterInProgress): self
     {
         $this->MangaChapterInProgress = $MangaChapterInProgress;
+
+        return $this;
+    }
+
+    public function getMangaId(): ?int
+    {
+        return $this->MangaId;
+    }
+
+    public function setMangaId(int $MangaId): self
+    {
+        $this->MangaId = $MangaId;
 
         return $this;
     }
