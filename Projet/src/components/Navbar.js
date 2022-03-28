@@ -27,7 +27,7 @@ function Navbar(){
             <nav classname="navbar">
                 <div classname="navbar-container">
                     <Link to='/' className='navbar-logo'>
-                        Test <i className=''/>
+                        CheckBoar <img src='./Images/logo_large.png'/>
                     </Link>
                 <div classname='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
