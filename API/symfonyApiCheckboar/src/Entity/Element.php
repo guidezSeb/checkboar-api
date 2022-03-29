@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ElementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
@@ -44,6 +46,26 @@ class Element
 
     #[ORM\Column(type: 'date', nullable: true)]
     private $ElementDateRelease;
+
+    #[ORM\OneToMany(mappedBy: 'element', targetEntity: UserElement::class, orphanRemoval: true)]
+    private $userElements;
+
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Book::class, cascade: ['persist', 'remove'])]
+    private $book;
+
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Movie::class, cascade: ['persist', 'remove'])]
+    private $movie;
+
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Manga::class, cascade: ['persist', 'remove'])]
+    private $manga;
+
+    public function __construct()
+    {
+        $this->userElements = new ArrayCollection();
+    }
+
+   
+
 
     public function getId(): ?int
     {
@@ -169,4 +191,86 @@ class Element
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, UserElement>
+     */
+    public function getUserElements(): Collection
+    {
+        return $this->userElements;
+    }
+
+    public function addUserElement(UserElement $userElement): self
+    {
+        if (!$this->userElements->contains($userElement)) {
+            $this->userElements[] = $userElement;
+            $userElement->setElement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserElement(UserElement $userElement): self
+    {
+        if ($this->userElements->removeElement($userElement)) {
+            // set the owning side to null (unless already changed)
+            if ($userElement->getElement() === $this) {
+                $userElement->setElement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(Book $book): self
+    {
+        // set the owning side of the relation if necessary
+        if ($book->getElement() !== $this) {
+            $book->setElement($this);
+        }
+
+        $this->book = $book;
+
+        return $this;
+    }
+
+    public function getMovie(): ?Movie
+    {
+        return $this->movie;
+    }
+
+    public function setMovie(Movie $movie): self
+    {
+        // set the owning side of the relation if necessary
+        if ($movie->getElement() !== $this) {
+            $movie->setElement($this);
+        }
+
+        $this->movie = $movie;
+
+        return $this;
+    }
+
+    public function getManga(): ?Manga
+    {
+        return $this->manga;
+    }
+
+    public function setManga(Manga $manga): self
+    {
+        // set the owning side of the relation if necessary
+        if ($manga->getElement() !== $this) {
+            $manga->setElement($this);
+        }
+
+        $this->manga = $manga;
+
+        return $this;
+    }
+
 }

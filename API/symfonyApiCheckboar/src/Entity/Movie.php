@@ -21,6 +21,10 @@ class Movie
     #[ORM\Column(type: 'integer')]
     private $MovieId;
 
+    #[ORM\OneToOne(inversedBy: 'movie', targetEntity: Element::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $element;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +50,18 @@ class Movie
     public function setMovieId(int $MovieId): self
     {
         $this->MovieId = $MovieId;
+
+        return $this;
+    }
+
+    public function getElement(): ?Element
+    {
+        return $this->element;
+    }
+
+    public function setElement(Element $element): self
+    {
+        $this->element = $element;
 
         return $this;
     }
