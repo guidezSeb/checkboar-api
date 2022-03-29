@@ -1,9 +1,13 @@
 import React from 'react';
 import '../../styles/App.css';
+import Footer from '../Footer';
+import '../../styles/Element.css';
 
 export default function AnimeList() {
   return(
+    <>
 <div className='AnimeList'>
+
       <h2 className='Titre-page-produit'>In progress</h2>
       <div className='tableau'>
       <table>
@@ -43,6 +47,9 @@ export default function AnimeList() {
       </table>
       </div>
     </div>
-
+    <Footer/>
+    </>
   );
+
 }
+

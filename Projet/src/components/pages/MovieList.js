@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../styles/App.css';
+import Footer from '../Footer';
+import '../../styles/Element.css';
 
 export default function MovieList() {
   return(
+    <>
     <div className='MovieList'>
       <h2 className='Titre-page-produit'>In progress</h2>
       <div className='tableau'>
@@ -43,6 +46,7 @@ export default function MovieList() {
       </table>
       </div>
     </div>
-
+    <Footer/>
+    </>
   );
 }

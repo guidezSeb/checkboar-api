@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../styles/App.css';
 import '../../styles/Element.css';
+import Footer from '../Footer';
 
 export default function BookList() {
   return (
+    <>
     <div className='BookList'>
       <h2 className='Titre-page-produit'>Reading</h2>
       <div className='tableau'>
@@ -44,6 +46,8 @@ export default function BookList() {
       </table>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 
 }

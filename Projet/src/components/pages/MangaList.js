@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../styles/App.css';
+import Footer from '../Footer';
+import '../../styles/Element.css';
 
 export default function MangaList() {
   return(
+    <>
    <div className='MangaList'>
       <h2 className='Titre-page-produit'>Reading</h2>
       <div className='tableau'>
@@ -43,6 +46,7 @@ export default function MangaList() {
       </table>
       </div>
     </div>
-   
+    <Footer/>
+    </>
    );
 }

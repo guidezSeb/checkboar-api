@@ -7,18 +7,22 @@
   
   .BookList{
     background-color: #DDCECE;
+    padding-bottom: 5%;
   }
 
   .MangaList{
     background-color: #DDD9CE;
+    padding-bottom: 5%;
   }
 
   .AnimeList{
     background-color: #CEDDD0;
+    padding-bottom: 5%;
   }
 
   .MovieList{
     background-color: #D4CEDD;
+    padding-bottom: 5%;
   }
 
   .tableau{
@@ -27,9 +31,11 @@
       position:sticky;
       border-radius:50px;
       margin-right: 5%;
-      width: 100%;
+      width: 90%;
+
   }
 
+  
 th{
     position: sticky;
     top: 0;
