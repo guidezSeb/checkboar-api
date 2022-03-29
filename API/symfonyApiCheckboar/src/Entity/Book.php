@@ -30,6 +30,10 @@ class Book
     #[ORM\Column(type: 'integer')]
     private $BookId;
 
+    #[ORM\OneToOne(inversedBy: 'book', targetEntity: Element::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $element;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +95,18 @@ class Book
     public function setBookId(int $BookId): self
     {
         $this->BookId = $BookId;
+
+        return $this;
+    }
+
+    public function getElement(): ?Element
+    {
+        return $this->element;
+    }
+
+    public function setElement(Element $element): self
+    {
+        $this->element = $element;
 
         return $this;
     }

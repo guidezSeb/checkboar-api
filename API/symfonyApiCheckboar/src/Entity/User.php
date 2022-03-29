@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
@@ -29,6 +31,19 @@ class User
 
     #[ORM\Column(type: 'integer')]
     private $IdFriend;
+
+  
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
+    private $comments;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserElement::class, orphanRemoval: true)]
+    private $userElements;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->userElements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -91,6 +106,67 @@ class User
     public function setIdFriend(int $IdFriend): self
     {
         $this->IdFriend = $IdFriend;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserElement>
+     */
+    public function getUserElements(): Collection
+    {
+        return $this->userElements;
+    }
+
+    public function addUserElement(UserElement $userElement): self
+    {
+        if (!$this->userElements->contains($userElement)) {
+            $this->userElements[] = $userElement;
+            $userElement->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserElement(UserElement $userElement): self
+    {
+        if ($this->userElements->removeElement($userElement)) {
+            // set the owning side to null (unless already changed)
+            if ($userElement->getUser() === $this) {
+                $userElement->setUser(null);
+            }
+        }
 
         return $this;
     }
