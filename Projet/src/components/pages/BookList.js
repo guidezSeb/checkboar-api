@@ -11,18 +11,22 @@ export default function BookList() {
       <div className='tableau'>
       <table>
         <tr>
-            <th></th>
+            <th>Cover</th>
             <th>Title</th>
-            <th>Score</th>
-            <th>Progress</th>
+            <th>Author</th>
+            <th>Nationality</th>
+            <th>Year</th>
             <th>Type</th>
+            <th>Progress</th>
         </tr>
         <tr>
           <td>image</td>
           <td>Harry Potter et la chambre des secrets</td>
-          <td>4.5</td>
-          <td>17/23</td>
+          <td>JK Rowling</td>
+          <td>British</td>
+          <td>1998</td>
           <td>Roman</td>
+          <td>Chapter 6</td>
         </tr>
       </table>
       </div>
@@ -30,18 +34,22 @@ export default function BookList() {
       <div className='tableau'>
       <table>
         <tr>
-            <th></th>
+        <th>Cover</th>
             <th>Title</th>
-            <th>Score</th>
-            <th>Progress</th>
+            <th>Author</th>
+            <th>Nationality</th>
+            <th>Year</th>
             <th>Type</th>
+            <th>Score</th>
         </tr>
         <tr>
           <td>image</td>
           <td>Harry Potter à l'école des Sorciers</td>
-          <td>4.5</td>
-          <td>20/20</td>
+          <td>JK Rowling</td>
+          <td>British</td>
+          <td>1997</td>
           <td>Roman</td>
+          <td>4.5/5</td>
         </tr>
       </table>
       </div>

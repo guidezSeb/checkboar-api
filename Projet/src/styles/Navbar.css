@@ -1,17 +1,15 @@
 .navbar {
     height: 80px;
     display: flex;
-    justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
     z-index: 999;
   }
-  
+
   .navbar-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 80px;
     max-width: 1500px;
@@ -19,13 +17,7 @@
   }
   
   .navbar-logo {
-    color: black;
-    justify-self: start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
     display: flex;
-    align-items: center;
     background-color: #34495e;
   }
   .fa-typo3 {
@@ -33,12 +25,9 @@
   }
   
   .nav-menu {
-    /* display: grid; */
-    /* grid-template-columns: repeat(6, auto);*/
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    justify-content: end;
     background-color: #34495e;
     margin: 0 auto;
     display: flex;
