@@ -36,7 +36,6 @@
 
   
 th{
-    position: sticky;
     top: 0;
     color:#e2d49e;
     padding-left: 20%;
@@ -46,7 +45,6 @@ th{
   }
 
   td{
-    position: sticky;
     top: 0;
     color:#e2d49e;
     padding-left: 20%;

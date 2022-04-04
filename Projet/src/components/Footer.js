@@ -43,7 +43,7 @@ function Footer() {
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
-            <Link to='/' className='social-logo'>
+            <Link to='/' className='footer-logo-image'>
             <img style={{width:100, height:100}} src={require('../Images/logo_medium.svg').default}/>
             </Link>
           </div>
