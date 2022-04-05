@@ -25,13 +25,26 @@
     padding-bottom: 5%;
   }
 
+  .PageProfil{
+    background-color: #d9d8d3;
+    padding-bottom: 5%;
+  }
+
   .tableau{
       background-color: #34495e;
       margin-left: 5%;
       border-radius:50px;
       margin-right: 5%;
       width: 90%;
+  }
 
+  .tableau-profil{
+    background-color: #b6b6b6;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius:50px;
+    margin-right: 5%;
+    width: 40%;
   }
 
   
