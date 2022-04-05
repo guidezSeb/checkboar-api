@@ -31,24 +31,27 @@
       border-radius:50px;
       margin-right: 5%;
       width: 90%;
-
+      overflow: scroll;
   }
 
   
 th{
     top: 0;
     color:#e2d49e;
-    padding-left: 20%;
+    padding-left: 10px;
     text-align: center;
-    height: 70px;
+    height: 50px;
     vertical-align: top;
+    min-width: 130px;
+    vertical-align: middle;
   }
 
   td{
     top: 0;
     color:#e2d49e;
-    padding-left: 20%;
+    padding-left: 10px;
     text-align: center;
     height: 70px;
     vertical-align: top;
+    
   }

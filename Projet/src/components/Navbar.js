@@ -24,12 +24,12 @@ function Navbar(){
     
     return(
         <>
-            <nav classname="navbar">
-                <div classname="navbar-container">
+            <nav className="navbar">
+                <div className="navbar-container">
                     <Link to='/' className='navbar-logo'>
-                        <img style={{width:100, height:100}} alt="CheckBoar" src={require('../Images/logo_medium.svg').default}/>
+                        <img style={{width:80, height:80}} alt="CheckBoar" src={require('../Images/logo_medium.svg').default}/>
                     </Link>
-                <div classname='menu-icon' onClick={handleClick}>
+                <div className='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
@@ -66,7 +66,7 @@ function Navbar(){
                     >
                     Sign Up
                     </Link>
-                    <div classname='button-signup'>
+                    <div className='button-signup'>
                      {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
                     </div>
                 </li>

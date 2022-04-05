@@ -20,7 +20,7 @@ export default function BookList() {
             <th>Progress</th>
         </tr>
         <tr>
-          <td>image</td>
+          <td>image</td> {/*<td><img style={{width:80, height:80}} alt="CheckBoar" src={require('../../Images/tmp/HP_T1.png').default}/></td> */}
           <td>Harry Potter et la chambre des secrets</td>
           <td>JK Rowling</td>
           <td>British</td>
