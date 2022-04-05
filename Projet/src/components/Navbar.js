@@ -27,7 +27,7 @@ function Navbar(){
             <nav classname="navbar">
                 <div classname="navbar-container">
                     <Link to='/' className='navbar-logo'>
-                        <img style={{width:100, height:100}} src={require('../Images/logo_medium.svg').default}/>
+                        <img style={{width:100, height:100}} alt="CheckBoar" src={require('../Images/logo_medium.svg').default}/>
                     </Link>
                 <div classname='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
@@ -59,22 +59,34 @@ function Navbar(){
                     </Link>
                 </li>
                 <li>
-              <Link
-                to='/sign-up'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-              <div classname='button-signup'>
-              {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
-              </div>
-            </li>
-          </ul>
-
-                </div>
-            </nav>
-        </>
+                    <Link
+                        to='/sign-up'
+                        className='nav-links-mobile'
+                     onClick={closeMobileMenu}
+                    >
+                    Sign Up
+                    </Link>
+                    <div classname='button-signup'>
+                     {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                    </div>
+                </li>
+                 <li>
+                    <div className="search">
+                        <form action="/" method="get">
+                                <input
+                                    type="text"
+                                    id="header-search"
+                                    placeholder="Search"
+                                    name="search" 
+                                />
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </li> 
+            </ul>
+            </div>
+        </nav>
+    </>
     )
 }
 
