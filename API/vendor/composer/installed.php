@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '136e7a064f5d16c3584ae899454800cf88097b90',
+        'reference' => 'b5ed7183b1c57065070c49e5c3cab33bdcf74970',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '136e7a064f5d16c3584ae899454800cf88097b90',
+            'reference' => 'b5ed7183b1c57065070c49e5c3cab33bdcf74970',
             'dev_requirement' => false,
         ),
         'api-platform/api-pack' => array(
@@ -334,8 +334,8 @@
         'psr/link-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/log' => array(
@@ -358,6 +358,15 @@
             'provided' => array(
                 0 => '1.0|2.0|3.0',
             ),
+        ),
+        'symfony/apache-pack' => array(
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
+            'type' => 'symfony-pack',
+            'install_path' => __DIR__ . '/../symfony/apache-pack',
+            'aliases' => array(),
+            'reference' => '3aa5818d73ad2551281fc58a75afd9ca82622e6c',
+            'dev_requirement' => false,
         ),
         'symfony/asset' => array(
             'pretty_version' => 'v6.0.3',
