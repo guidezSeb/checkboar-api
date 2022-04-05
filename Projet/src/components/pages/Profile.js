@@ -24,7 +24,8 @@ export default function Profile() {
       </div>
       <div className='tableau-profil'>
         <table>
-<td>
+<tr>
+          <td>
       <table>
         <tr>
             <th>Films Favoris</th>
@@ -36,23 +37,28 @@ export default function Profile() {
         </tr>
       </table>
       </td>
+      </tr>
+      <tr>
       <td>
+     
       <table>
         <tr>
             <th>Mangas Favoris</th>
+          </tr>
+          <tr>
+            <td>Conan</td>
+            <td>Grand Blue</td>
+            <td>Eyeshield 21</td>
+          </tr>
+        </table>
+       
+        </td>
         </tr>
-        <tr>
-          <td>Conan</td>
-          <td>Grand Blue</td>
-          <td>Eyeshield 21</td>
-        </tr>
-      </table>
-      </td>
-      </table>
+        </table>
 
-      </div>
+        </div>
 
-      </div>
+        </div>
     <Footer/>
     </>
   );
