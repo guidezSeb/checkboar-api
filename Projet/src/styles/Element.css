@@ -4,6 +4,11 @@
     padding-left: 5%;
     padding-bottom: 1%;
   }
+
+  .Home{
+    background-color: #F2F2F2;
+    padding-bottom: 5%;
+  }
   
   .BookList{
     background-color: #DDCECE;
@@ -40,7 +45,7 @@
   }
 
   .tableau-profil{
-    background-color: #b6b6b6;
+    background-color: #aca8a3;
     margin-top: 10px;
     margin-left: 5%;
     border-radius:50px;
@@ -67,5 +72,15 @@ th{
     text-align: center;
     height: 70px;
     vertical-align: top;
-    
   }
+
+  .Home-tab-books{
+    background-color: #DDCECE;
+    margin-left: 5%;
+    border-radius:50px;
+    margin-right: 5%;
+    margin-top: 10px;
+    width: 90%;
+  }
+
+

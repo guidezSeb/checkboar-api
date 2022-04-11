@@ -24,40 +24,77 @@ export default function Profile() {
       </div>
       <div className='tableau-profil'>
         <table>
-<tr>
+      <tr>
           <td>
       <table>
         <tr>
-            <th>Films Favoris</th>
+            <th>Favorite Movies</th>
         </tr>
+        <table>
         <tr>
           <td>Kill Bill</td>
           <td>Kill Bill 2</td>
           <td>Matrix 1</td>
         </tr>
+        </table>
       </table>
       </td>
       </tr>
+
       <tr>
       <td>
-     
+    
       <table>
         <tr>
-            <th>Mangas Favoris</th>
+            <th>Favorite Mangas</th>
           </tr>
+          <table>
           <tr>
             <td>Conan</td>
             <td>Grand Blue</td>
             <td>Eyeshield 21</td>
           </tr>
+          </table>
         </table>
-       
         </td>
         </tr>
+
+        <tr>
+      <td>
+      <table>
+        <tr>
+            <th>Favorite Anime</th>
+          </tr>
+          <table>
+          <tr>
+            <td>One Piece</td>
+            <td>Yu-Gi-Oh</td>
+            <td>Olive y Tom</td>
+          </tr>
+          </table>
         </table>
+        </td>
+        </tr>
 
+        <tr>
+      <td>
+      <table>
+        <tr>
+            <th>Favorite Books</th>
+          </tr>
+          <table>
+          <tr>
+            <td>Le Seigneur des Anneaux : Les Deux Tours</td>
+            <td>Le Sorceleur : Le Sang des elfes</td>
+            <td>Le Nom du Vent</td>
+          </tr>
+          </table>
+        </table>
+        </td>
+        </tr>
+
+        </table>
         </div>
-
         </div>
     <Footer/>
     </>
