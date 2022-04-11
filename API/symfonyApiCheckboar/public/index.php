@@ -2,7 +2,7 @@
 
 use App\Kernel;
 
-dd(dirname(__DIR__));
+echo dirname(__DIR__);
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
