@@ -1,1 +1,1 @@
-web: heroku-php-apache2 symfonyApiCheckboar/public/
+web: heroku-php-apache2 public/
