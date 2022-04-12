@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-@apiRessource();
+@ApiRessource();
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource]
 class User
