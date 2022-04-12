@@ -54,7 +54,7 @@
   }
 
   
-.MangaList th, .AnimeList th, .MovieList th, .BookList th{
+.MangaList th, .AnimeList th, .MovieList th, .BookList th, .PageProfil th{
     top: 0;
     color:#e2d49e;
     padding-left: 10px;
@@ -77,7 +77,7 @@
   .Home th{
     color: #877E9D;
   }
-  
+
   .Home-tab-books, .Home-tab-animes, .Home-tab-mangas, .Home-tab-movies{
     margin-left: 5%;
     border-radius:50px;

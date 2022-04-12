@@ -17,26 +17,26 @@ function Footer() {
           </div>
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
+            <Link to='/contact'>Contact</Link>
             <Link to='/'>Support</Link>
             <Link to='/'>Destinations</Link>
-            <Link to='/'>Sponsorships</Link>
+            <Link to='/sponsorship'>Sponsorships</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
-            <h2>Videos</h2>
-            <Link to='/'>Submit Video</Link>
-            <Link to='/'>Ambassadors</Link>
-            <Link to='/'>Agency</Link>
-            <Link to='/'>Influencer</Link>
+            <h2>Browse</h2>
+            <Link to='/'>All Movies</Link>
+            <Link to='/'>All Mangas</Link>
+            <Link to='/'>All Anime</Link>
+            <Link to='/'>All Books</Link>
           </div>
           <div class='footer-link-items'>
             <h2>Social Media</h2>
-            <Link to='/'>Instagram</Link>
-            <Link to='/'>Facebook</Link>
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
+            <a href='https://www.instagram.com/?hl=fr' target='_blank'>Instagram</a>
+            <a href='https://www.facebook.com/' target='_blank'>Facebook</a>
+            <a href='https://www.youtube.com/' target='_blank'>Youtube</a>
+            <a href='https://twitter.com/?lang=fr' target='_blank'>Twitter</a>
           </div>
         </div>
       </div>
