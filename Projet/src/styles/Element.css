@@ -54,7 +54,7 @@
   }
 
   
-th{
+.MangaList th, .AnimeList th, .MovieList th, .BookList th{
     top: 0;
     color:#e2d49e;
     padding-left: 10px;
@@ -74,13 +74,33 @@ th{
     vertical-align: top;
   }
 
-  .Home-tab-books{
-    background-color: #DDCECE;
+  .Home th{
+    color: #877E9D;
+  }
+  
+  .Home-tab-books, .Home-tab-animes, .Home-tab-mangas, .Home-tab-movies{
     margin-left: 5%;
     border-radius:50px;
     margin-right: 5%;
     margin-top: 10px;
-    width: 90%;
+    width: 40%;
+    height:300px;
   }
+  .Home-tab-books{
+    background-color: #DDCECE;
+  }
+
+  .Home-tab-mangas{
+    background-color: #DDD9CE;
+  }
+
+  .Home-tab-movies{
+    background-color: #D4CEDD;
+  }
+
+  .Home-tab-animes{
+    background-color: #CEDDD0;
+  }
+
 
 
