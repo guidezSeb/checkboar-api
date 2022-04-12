@@ -10,7 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource]
-#[Table(name: "`user`")]
+#[ORM\Table(name: "`user`")]
 class User
 {
     #[ORM\Id]
