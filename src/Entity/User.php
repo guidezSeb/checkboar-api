@@ -18,9 +18,7 @@ class User
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
-    private $UserId;
-
+  
     #[ORM\Column(type: 'string', length: 255)]
     private $Login;
 
@@ -51,14 +49,9 @@ class User
         return $this->id;
     }
 
-    public function getUserId(): ?int
+    public function setId(int $id): self
     {
-        return $this->UserId;
-    }
-
-    public function setUserId(int $UserId): self
-    {
-        $this->UserId = $UserId;
+        $this->id = $id;
 
         return $this;
     }
