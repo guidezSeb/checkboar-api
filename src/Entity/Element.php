@@ -18,34 +18,34 @@ class Element
     private $id;
 
     #[ORM\Column(type: 'integer')]
-    private $ElementId;
+    private $elementId;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $ElementName;
+    private $elementName;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $ElementAuthor;
+    private $elementAuthor;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $ElementDescription;
+    private $elementDescription;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $ElementStatus;
+    private $elementStatus;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private $ElementIsFavorite;
+    private $elementIsFavorite;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $ElementCoverImage;
+    private $elementCoverImage;
 
     #[ORM\Column(type: 'array', nullable: true)]
-    private $ElementRelation = [];
+    private $elementRelation = [];
 
     #[ORM\Column(type: 'array', nullable: true)]
-    private $ElementTag = [];
+    private $elementTag = [];
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $ElementDateRelease;
+    private $elementDateRelease;
 
     #[ORM\OneToMany(mappedBy: 'element', targetEntity: UserElement::class, orphanRemoval: true)]
     private $userElements;
@@ -74,120 +74,120 @@ class Element
 
     public function getElementId(): ?int
     {
-        return $this->ElementId;
+        return $this->elementId;
     }
 
-    public function setElementId(int $ElementId): self
+    public function setElementId(int $elementId): self
     {
-        $this->ElementId = $ElementId;
+        $this->elementId = $elementId;
 
         return $this;
     }
 
     public function getElementName(): ?string
     {
-        return $this->ElementName;
+        return $this->elementName;
     }
 
-    public function setElementName(string $ElementName): self
+    public function setElementName(string $elementName): self
     {
-        $this->ElementName = $ElementName;
+        $this->elementName = $elementName;
 
         return $this;
     }
 
     public function getElementAuthor(): ?string
     {
-        return $this->ElementAuthor;
+        return $this->elementAuthor;
     }
 
-    public function setElementAuthor(?string $ElementAuthor): self
+    public function setElementAuthor(?string $elementAuthor): self
     {
-        $this->ElementAuthor = $ElementAuthor;
+        $this->elementAuthor = $elementAuthor;
 
         return $this;
     }
 
     public function getElementDescription(): ?string
     {
-        return $this->ElementDescription;
+        return $this->elementDescription;
     }
 
-    public function setElementDescription(string $ElementDescription): self
+    public function setElementDescription(string $elementDescription): self
     {
-        $this->ElementDescription = $ElementDescription;
+        $this->elementDescription = $elementDescription;
 
         return $this;
     }
 
     public function getElementStatus(): ?string
     {
-        return $this->ElementStatus;
+        return $this->elementStatus;
     }
 
-    public function setElementStatus(?string $ElementStatus): self
+    public function setElementStatus(?string $elementStatus): self
     {
-        $this->ElementStatus = $ElementStatus;
+        $this->elementStatus = $elementStatus;
 
         return $this;
     }
 
     public function getElementIsFavorite(): ?bool
     {
-        return $this->ElementIsFavorite;
+        return $this->elementIsFavorite;
     }
 
-    public function setElementIsFavorite(?bool $ElementIsFavorite): self
+    public function setElementIsFavorite(?bool $elementIsFavorite): self
     {
-        $this->ElementIsFavorite = $ElementIsFavorite;
+        $this->elementIsFavorite = $elementIsFavorite;
 
         return $this;
     }
 
     public function getElementCoverImage(): ?string
     {
-        return $this->ElementCoverImage;
+        return $this->elementCoverImage;
     }
 
-    public function setElementCoverImage(string $ElementCoverImage): self
+    public function setElementCoverImage(string $elementCoverImage): self
     {
-        $this->ElementCoverImage = $ElementCoverImage;
+        $this->elementCoverImage = $elementCoverImage;
 
         return $this;
     }
 
     public function getElementRelation(): ?array
     {
-        return $this->ElementRelation;
+        return $this->elementRelation;
     }
 
-    public function setElementRelation(?array $ElementRelation): self
+    public function setElementRelation(?array $elementRelation): self
     {
-        $this->ElementRelation = $ElementRelation;
+        $this->elementRelation = $elementRelation;
 
         return $this;
     }
 
     public function getElementTag(): ?array
     {
-        return $this->ElementTag;
+        return $this->elementTag;
     }
 
-    public function setElementTag(?array $ElementTag): self
+    public function setElementTag(?array $elementTag): self
     {
-        $this->ElementTag = $ElementTag;
+        $this->elementTag = $elementTag;
 
         return $this;
     }
 
     public function getElementDateRelease(): ?\DateTimeInterface
     {
-        return $this->ElementDateRelease;
+        return $this->elementDateRelease;
     }
 
-    public function setElementDateRelease(?\DateTimeInterface $ElementDateRelease): self
+    public function setElementDateRelease(?\DateTimeInterface $elementDateRelease): self
     {
-        $this->ElementDateRelease = $ElementDateRelease;
+        $this->elementDateRelease = $elementDateRelease;
 
         return $this;
     }

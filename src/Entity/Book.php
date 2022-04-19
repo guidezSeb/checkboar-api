@@ -16,19 +16,19 @@ class Book
     private $id;
 
     #[ORM\Column(type: 'date')]
-    private $BookDateStart;
+    private $bookDateStart;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $BookDateEnd;
+    private $bookDateEnd;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $BookChapterInProgress;
+    private $bookChapterInProgress;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $BookChapterTotal;
+    private $bookChapterTotal;
 
     #[ORM\Column(type: 'integer')]
-    private $BookId;
+    private $bookId;
 
     #[ORM\OneToOne(inversedBy: 'book', targetEntity: Element::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,60 +41,60 @@ class Book
 
     public function getBookDateStart(): ?\DateTimeInterface
     {
-        return $this->BookDateStart;
+        return $this->bookDateStart;
     }
 
-    public function setBookDateStart(\DateTimeInterface $BookDateStart): self
+    public function setBookDateStart(\DateTimeInterface $bookDateStart): self
     {
-        $this->BookDateStart = $BookDateStart;
+        $this->bookDateStart = $bookDateStart;
 
         return $this;
     }
 
     public function getBookDateEnd(): ?\DateTimeInterface
     {
-        return $this->BookDateEnd;
+        return $this->bookDateEnd;
     }
 
-    public function setBookDateEnd(?\DateTimeInterface $BookDateEnd): self
+    public function setBookDateEnd(?\DateTimeInterface $bookDateEnd): self
     {
-        $this->BookDateEnd = $BookDateEnd;
+        $this->bookDateEnd = $bookDateEnd;
 
         return $this;
     }
 
     public function getBookChapterInProgress(): ?int
     {
-        return $this->BookChapterInProgress;
+        return $this->bookChapterInProgress;
     }
 
-    public function setBookChapterInProgress(?int $BookChapterInProgress): self
+    public function setBookChapterInProgress(?int $bookChapterInProgress): self
     {
-        $this->BookChapterInProgress = $BookChapterInProgress;
+        $this->bookChapterInProgress = $bookChapterInProgress;
 
         return $this;
     }
 
     public function getBookChapterTotal(): ?int
     {
-        return $this->BookChapterTotal;
+        return $this->bookChapterTotal;
     }
 
-    public function setBookChapterTotal(?int $BookChapterTotal): self
+    public function setBookChapterTotal(?int $bookChapterTotal): self
     {
-        $this->BookChapterTotal = $BookChapterTotal;
+        $this->bookChapterTotal = $bookChapterTotal;
 
         return $this;
     }
 
     public function getBookId(): ?int
     {
-        return $this->BookId;
+        return $this->bookId;
     }
 
-    public function setBookId(int $BookId): self
+    public function setBookId(int $bookId): self
     {
-        $this->BookId = $BookId;
+        $this->bookId = $bookId;
 
         return $this;
     }

@@ -16,10 +16,10 @@ class Movie
     private $id;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $MovieDateSeen;
+    private $movieDateSeen;
 
     #[ORM\Column(type: 'integer')]
-    private $MovieId;
+    private $movieId;
 
     #[ORM\OneToOne(inversedBy: 'movie', targetEntity: Element::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -32,24 +32,24 @@ class Movie
 
     public function getMovieDateSeen(): ?\DateTimeInterface
     {
-        return $this->MovieDateSeen;
+        return $this->movieDateSeen;
     }
 
-    public function setMovieDateSeen(?\DateTimeInterface $MovieDateSeen): self
+    public function setMovieDateSeen(?\DateTimeInterface $movieDateSeen): self
     {
-        $this->MovieDateSeen = $MovieDateSeen;
+        $this->movieDateSeen = $movieDateSeen;
 
         return $this;
     }
 
     public function getMovieId(): ?int
     {
-        return $this->MovieId;
+        return $this->movieId;
     }
 
-    public function setMovieId(int $MovieId): self
+    public function setMovieId(int $movieId): self
     {
-        $this->MovieId = $MovieId;
+        $this->movieId = $movieId;
 
         return $this;
     }

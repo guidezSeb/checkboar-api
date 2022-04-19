@@ -16,13 +16,13 @@ class Comment
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Text;
+    private $text;
 
     #[ORM\Column(type: 'integer')]
-    private $CommentID;
+    private $commentID;
 
     #[ORM\Column(type: 'datetime')]
-    private $CommentDate;
+    private $commentDate;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
@@ -35,36 +35,36 @@ class Comment
 
     public function getText(): ?string
     {
-        return $this->Text;
+        return $this->text;
     }
 
-    public function setText(string $Text): self
+    public function setText(string $text): self
     {
-        $this->Text = $Text;
+        $this->text = $text;
 
         return $this;
     }
 
     public function getCommentID(): ?int
     {
-        return $this->CommentID;
+        return $this->commentID;
     }
 
-    public function setCommentID(int $CommentID): self
+    public function setCommentID(int $commentID): self
     {
-        $this->CommentID = $CommentID;
+        $this->commentID = $commentID;
 
         return $this;
     }
 
     public function getCommentDate(): ?\DateTimeInterface
     {
-        return $this->CommentDate;
+        return $this->commentDate;
     }
 
-    public function setCommentDate(\DateTimeInterface $CommentDate): self
+    public function setCommentDate(\DateTimeInterface $commentDate): self
     {
-        $this->CommentDate = $CommentDate;
+        $this->commentDate = $commentDate;
 
         return $this;
     }

@@ -16,19 +16,19 @@ class Manga
     private $id;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $MangaDateStart;
+    private $mangaDateStart;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $MangaDateEnd;
+    private $mangaDateEnd;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $MangaChapterTotal;
+    private $mangaChapterTotal;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $MangaChapterInProgress;
+    private $mangaChapterInProgress;
 
     #[ORM\Column(type: 'integer')]
-    private $MangaId;
+    private $mangaId;
 
     #[ORM\OneToOne(inversedBy: 'manga', targetEntity: Element::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,60 +41,60 @@ class Manga
 
     public function getMangaDateStart(): ?\DateTimeInterface
     {
-        return $this->MangaDateStart;
+        return $this->mangaDateStart;
     }
 
-    public function setMangaDateStart(?\DateTimeInterface $MangaDateStart): self
+    public function setMangaDateStart(?\DateTimeInterface $mangaDateStart): self
     {
-        $this->MangaDateStart = $MangaDateStart;
+        $this->mangaDateStart = $mangaDateStart;
 
         return $this;
     }
 
     public function getMangaDateEnd(): ?\DateTimeInterface
     {
-        return $this->MangaDateEnd;
+        return $this->mangaDateEnd;
     }
 
-    public function setMangaDateEnd(?\DateTimeInterface $MangaDateEnd): self
+    public function setMangaDateEnd(?\DateTimeInterface $mangaDateEnd): self
     {
-        $this->MangaDateEnd = $MangaDateEnd;
+        $this->mangaDateEnd = $mangaDateEnd;
 
         return $this;
     }
 
     public function getMangaChapterTotal(): ?int
     {
-        return $this->MangaChapterTotal;
+        return $this->mangaChapterTotal;
     }
 
-    public function setMangaChapterTotal(?int $MangaChapterTotal): self
+    public function setMangaChapterTotal(?int $mangaChapterTotal): self
     {
-        $this->MangaChapterTotal = $MangaChapterTotal;
+        $this->mangaChapterTotal = $mangaChapterTotal;
 
         return $this;
     }
 
     public function getMangaChapterInProgress(): ?int
     {
-        return $this->MangaChapterInProgress;
+        return $this->mangaChapterInProgress;
     }
 
-    public function setMangaChapterInProgress(?int $MangaChapterInProgress): self
+    public function setMangaChapterInProgress(?int $mangaChapterInProgress): self
     {
-        $this->MangaChapterInProgress = $MangaChapterInProgress;
+        $this->mangaChapterInProgress = $mangaChapterInProgress;
 
         return $this;
     }
 
     public function getMangaId(): ?int
     {
-        return $this->MangaId;
+        return $this->mangaId;
     }
 
-    public function setMangaId(int $MangaId): self
+    public function setMangaId(int $mangaId): self
     {
-        $this->MangaId = $MangaId;
+        $this->mangaId = $mangaId;
 
         return $this;
     }

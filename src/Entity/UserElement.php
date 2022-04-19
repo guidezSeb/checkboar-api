@@ -24,7 +24,7 @@ class UserElement
     private $element;
 
     #[ORM\Column(type: 'float', nullable: true)]
-    private $Score;
+    private $score;
 
     public function getId(): ?int
     {
@@ -57,12 +57,12 @@ class UserElement
 
     public function getScore(): ?float
     {
-        return $this->Score;
+        return $this->score;
     }
 
-    public function setScore(?float $Score): self
+    public function setScore(?float $score): self
     {
-        $this->Score = $Score;
+        $this->score = $score;
 
         return $this;
     }

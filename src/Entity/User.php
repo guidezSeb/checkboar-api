@@ -20,16 +20,16 @@ class User
 
   
     #[ORM\Column(type: 'string', length: 255)]
-    private $Login;
+    private $login;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Password;
+    private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $UserImage;
+    private $userImage;
 
     #[ORM\Column(type: 'integer')]
-    private $IdFriend;
+    private $idFriend;
 
   
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
@@ -58,12 +58,12 @@ class User
 
     public function getLogin(): ?string
     {
-        return $this->Login;
+        return $this->login;
     }
 
-    public function setLogin(string $Login): self
+    public function setLogin(string $login): self
     {
-        $this->Login = $Login;
+        $this->login = $login;
 
         return $this;
     }
@@ -73,33 +73,33 @@ class User
         return $this->password;
     }
 
-    public function setPassword(string $Password): self
+    public function setPassword(string $password): self
     {
-        $this->password = $Password;
+        $this->password = $password;
 
         return $this;
     }
 
     public function getUserImage(): ?string
     {
-        return $this->UserImage;
+        return $this->userImage;
     }
 
-    public function setUserImage(string $UserImage): self
+    public function setUserImage(string $userImage): self
     {
-        $this->UserImage = $UserImage;
+        $this->userImage = $userImage;
 
         return $this;
     }
 
     public function getIdFriend(): ?int
     {
-        return $this->IdFriend;
+        return $this->idFriend;
     }
 
-    public function setIdFriend(int $IdFriend): self
+    public function setIdFriend(int $idFriend): self
     {
-        $this->IdFriend = $IdFriend;
+        $this->idFriend = $idFriend;
 
         return $this;
     }
