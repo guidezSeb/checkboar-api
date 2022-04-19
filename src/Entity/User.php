@@ -32,10 +32,10 @@ class User
     private $idFriend;
 
   
-    #[ORM\OneToMany(mappedBy: 'user', nullable: true, targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
-    #[ORM\OneToMany(mappedBy: 'user', nullable: true, targetEntity: UserElement::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserElement::class, orphanRemoval: true)]
     private $userElements;
 
     public function __construct()
