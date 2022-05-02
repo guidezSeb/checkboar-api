@@ -1,38 +1,27 @@
-.Titre-page-produit{
-    color:#34495e;
-    padding-top: 5%;
-    padding-left: 5%;
-    padding-bottom: 1%;
-  }
+
 
   .Home{
     background-color: #F2F2F2;
-    padding-bottom: 5%;
   }
   
   .BookList{
     background-color: #DDCECE;
-    padding-bottom: 5%;
   }
 
   .MangaList{
     background-color: #DDD9CE;
-    padding-bottom: 5%;
   }
 
   .AnimeList{
     background-color: #CEDDD0;
-    padding-bottom: 5%;
   }
 
   .MovieList{
     background-color: #D4CEDD;
-    padding-bottom: 5%;
   }
 
   .PageProfil{
     background-color: #d9d8d3;
-    padding-bottom: 5%;
   }
 
   .tableau{
@@ -74,33 +63,6 @@
     vertical-align: top;
   }
 
-  .Home th{
-    color: #877E9D;
-  }
-
-  .Home-tab-books, .Home-tab-animes, .Home-tab-mangas, .Home-tab-movies{
-    margin-left: 5%;
-    border-radius:50px;
-    margin-right: 5%;
-    margin-top: 10px;
-    width: 40%;
-    height:300px;
-  }
-  .Home-tab-books{
-    background-color: #DDCECE;
-  }
-
-  .Home-tab-mangas{
-    background-color: #DDD9CE;
-  }
-
-  .Home-tab-movies{
-    background-color: #D4CEDD;
-  }
-
-  .Home-tab-animes{
-    background-color: #CEDDD0;
-  }
 
 
 

@@ -1,0 +1,58 @@
+.Home-tab-books{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Home-tab-section{
+   
+}
+.Home-tabs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.Home-tab-title {
+    color: #877E9D;
+    font-weight: 600;
+    padding-left: 10px;
+  }
+
+.Home-tab-section{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius:50px;
+    margin: 10px 5%;
+    height:300px;
+
+}
+.Home-tab-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.Home-tab-container > *{
+   margin: 10px;
+}
+.Home-tab-books{
+background-color: #DDCECE;
+}
+
+
+
+.Home-tab-mangas{
+background-color: #DDD9CE;
+}
+
+.Home-tab-movies{
+background-color: #D4CEDD;
+}
+
+.Home-tab-animes{
+background-color: #CEDDD0;
+}
+@media screen and (min-width: 740px) {
+    .Home-tab-section{
+        width: 40%;
+    }
+}

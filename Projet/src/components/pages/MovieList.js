@@ -6,8 +6,9 @@ import '../../styles/Element.css';
 export default function MovieList() {
   return(
     <>
-    <div className='MovieList'>
-      <h2 className='Titre-page-produit'>In progress</h2>
+    <div className='page-container MovieList'>
+    <div className='wrap'>
+      <h2 className='page-list-title'>In progress</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -28,7 +29,7 @@ export default function MovieList() {
         </tr>
       </table>
       </div>
-      <h2 className='Titre-page-produit'>Complete</h2>
+      <h2 className='page-list-title'>Complete</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -51,6 +52,7 @@ export default function MovieList() {
         </tr>
       </table>
       </div>
+    </div>
     </div>
     <Footer/>
     </>

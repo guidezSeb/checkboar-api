@@ -1,13 +1,15 @@
 import React from 'react';
 import '../../styles/App.css';
 import '../../styles/Element.css';
+import '../../styles/Global.css';
 import Footer from '../Footer';
 
 export default function BookList() {
   return (
     <>
-    <div className='BookList'>
-      <h2 className='Titre-page-produit'>Reading</h2>
+    <div className='page-container BookList'>
+    <div className='wrap'>
+      <h2 className='page-list-title'>Reading</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -30,7 +32,7 @@ export default function BookList() {
         </tr>
       </table>
       </div>
-      <h2 className='Titre-page-produit'>Complete</h2>
+      <h2 className='page-list-title'>Complete</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -53,6 +55,7 @@ export default function BookList() {
         </tr>
       </table>
       </div>
+    </div>
     </div>
     <Footer/>
     </>

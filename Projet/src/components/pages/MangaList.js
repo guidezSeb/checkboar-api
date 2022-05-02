@@ -6,8 +6,9 @@ import '../../styles/Element.css';
 export default function MangaList() {
   return(
     <>
-   <div className='MangaList'>
-      <h2 className='Titre-page-produit'>Reading</h2>
+   <div className='page-container MangaList'>
+     <div className='wrap'>
+      <h2 className='page-list-title'>Reading</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -26,7 +27,7 @@ export default function MangaList() {
         </tr>
       </table>
       </div>
-      <h2 className='Titre-page-produit'>Complete</h2>
+      <h2 className='page-list-title'>Complete</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -44,6 +45,7 @@ export default function MangaList() {
           <td>Manga</td>
         </tr>
       </table>
+      </div>
       </div>
     </div>
     <Footer/>

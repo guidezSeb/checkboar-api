@@ -5,9 +5,10 @@ import Footer from '../Footer';
 export default function Contact() {
   return(
     <>
-    <div>
+    <div className='page-container'>
+      <div className='wrap'>
         <h2>Contact</h2>
-
+      </div>
     </div>
     <Footer/>
     </>
