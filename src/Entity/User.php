@@ -43,7 +43,7 @@ class User
         $this->comments = new ArrayCollection();
         $this->userElements = new ArrayCollection();
     }
-
+ 
     public function getId(): ?int
     {
         return $this->id;
