@@ -1,6 +1,8 @@
 import '../styles/Navbar.css';
 import {Link} from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from './Button';
 
 function Navbar(){
@@ -58,6 +60,19 @@ function Navbar(){
                         Movie List
                     </Link>
                 </li>
+                 <li>
+                    <div className="search">
+                        <form action="/" method="get">
+                                <input
+                                    type="text"
+                                    id="header-search"
+                                    placeholder="Search"
+                                    name="search" 
+                                />
+                            <button className='btn--outline' type="submit">Search  <FontAwesomeIcon icon={faHome} /></button>
+                        </form>
+                    </div>
+                </li> 
                 <li>
                     <Link
                         to='/sign-up'
@@ -70,19 +85,6 @@ function Navbar(){
                      {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
                     </div>
                 </li>
-                 <li>
-                    <div className="search">
-                        <form action="/" method="get">
-                                <input
-                                    type="text"
-                                    id="header-search"
-                                    placeholder="Search"
-                                    name="search" 
-                                />
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </li> 
             </ul>
             </div>
         </nav>

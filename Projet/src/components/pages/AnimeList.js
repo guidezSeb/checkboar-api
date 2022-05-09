@@ -6,9 +6,9 @@ import '../../styles/Element.css';
 export default function AnimeList() {
   return(
     <>
-<div className='AnimeList'>
-
-      <h2 className='Titre-page-produit'>In progress</h2>
+<div className='page-container AnimeList'>
+<div className='wrap'>
+      <h2 className='page-list-title'>In progress</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -27,7 +27,7 @@ export default function AnimeList() {
         </tr>
       </table>
       </div>
-      <h2 className='Titre-page-produit'>Complete</h2>
+      <h2 className='page-list-title'>Complete</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -46,6 +46,7 @@ export default function AnimeList() {
         </tr>
       </table>
       </div>
+    </div>
     </div>
     <Footer/>
     </>

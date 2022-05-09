@@ -23,6 +23,7 @@
     max-width: 1000px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .footer-link-wrapper {

@@ -6,8 +6,9 @@ import '../../styles/Element.css';
 export default function Profile() {
   return(
     <>
-       <div className='PageProfil'>
-       <h2 className='Titre-page-produit'>Information</h2>
+       <div className='page-container PageProfil'>
+       <div className='wrap'>
+       <h2 className='page-list-title'>Information</h2>
       <div className='tableau'>
       <table>
         <tr>
@@ -94,6 +95,7 @@ export default function Profile() {
         </tr>
 
         </table>
+        </div>
         </div>
         </div>
     <Footer/>
