@@ -6,9 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource()]
+#[ApiResource]
+#[ORM\Table(name: "`user`")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -28,12 +32,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $userImage;
     
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
-    private $comments;
-
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserElement::class, orphanRemoval: true)]
     private $userElements;
     
+    public function __construct()
+    {
+        $this->userElements = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,11 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-        $this->userElements = new ArrayCollection();
-    }
+ 
     /**
      * A visual identifier that represents this user.
      *
@@ -122,35 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-     /**
-     * @return Collection<int, Comment>
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
 
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, UserElement>
@@ -164,7 +138,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->userElements->contains($userElement)) {
             $this->userElements[] = $userElement;
-            $userElement->setUser($this);
+            $userElement->setUsername($this);
         }
 
         return $this;
@@ -174,8 +148,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->userElements->removeElement($userElement)) {
             // set the owning side to null (unless already changed)
-            if ($userElement->getUser() === $this) {
-                $userElement->setUser(null);
+            if ($userElement->getUsername() === $this) {
+                $userElement->setUsername(null);
             }
         }
 
