@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\MovieRepository;
+use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
+#[ORM\Entity(repositoryClass: MovieRepository::class)]
+#[ApiResource]
+class Movie
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private $id;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private $MoviedateRelease;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $movieName;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $movieDirector;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $MovieNationality;
+
+
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getMoviedateRelease(): ?\DateTimeInterface
+    {
+        return $this->MoviedateRelease;
+    }
+
+    public function setMoviedateRelease(?\DateTimeInterface $MoviedateRelease): self
+    {
+        $this->MoviedateRelease = $MoviedateRelease;
+
+        return $this;
+    }
+
+    public function getMovieName(): ?string
+    {
+        return $this->movieName;
+    }
+
+    public function setMovieName(string $movieName): self
+    {
+        $this->movieName = $movieName;
+
+        return $this;
+    }
+
+    public function getMovieDirector(): ?string
+    {
+        return $this->movieDirector;
+    }
+
+    public function setMovieDirector(string $movieDirector): self
+    {
+        $this->movieDirector = $movieDirector;
+
+        return $this;
+    }
+
+    public function getMovieNationality(): ?string
+    {
+        return $this->MovieNationality;
+    }
+
+    public function setMovieNationality(string $MovieNationality): self
+    {
+        $this->MovieNationality = $MovieNationality;
+
+        return $this;
+    }
+
+   
+}

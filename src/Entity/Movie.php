@@ -16,53 +16,132 @@ class Movie
     private $id;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    private $movieDateSeen;
+    private $moviedateRelease;
 
-    #[ORM\Column(type: 'integer')]
-    private $movieId;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $movieName;
 
-    #[ORM\OneToOne(inversedBy: 'movie', targetEntity: Element::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private $element;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $movieDirector;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $movieDescription;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $movieStatus;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $movieCoverImage;
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $movieTags = [];
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $movieRelation = [];
+
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMovieDateSeen(): ?\DateTimeInterface
+    public function getMoviedateRelease(): ?\DateTimeInterface
     {
-        return $this->movieDateSeen;
+        return $this->moviedateRelease;
     }
 
-    public function setMovieDateSeen(?\DateTimeInterface $movieDateSeen): self
+    public function setMoviedateRelease(?\DateTimeInterface $oviedateRelease): self
     {
-        $this->movieDateSeen = $movieDateSeen;
+        $this->moviedateRelease = $oviedateRelease;
 
         return $this;
     }
 
-    public function getMovieId(): ?int
+    public function getMovieName(): ?string
     {
-        return $this->movieId;
+        return $this->movieName;
     }
 
-    public function setMovieId(int $movieId): self
+    public function setMovieName(string $movieName): self
     {
-        $this->movieId = $movieId;
+        $this->movieName = $movieName;
 
         return $this;
     }
 
-    public function getElement(): ?Element
+    public function getMovieDirector(): ?string
     {
-        return $this->element;
+        return $this->movieDirector;
     }
 
-    public function setElement(Element $element): self
+    public function setMovieDirector(string $movieDirector): self
     {
-        $this->element = $element;
+        $this->movieDirector = $movieDirector;
 
         return $this;
     }
+
+    public function getMovieDescription(): ?string
+    {
+        return $this->movieDescription;
+    }
+
+    public function setMovieDescription(?string $movieDescription): self
+    {
+        $this->movieDescription = $movieDescription;
+
+        return $this;
+    }
+
+    public function getMovieStatus(): ?bool
+    {
+        return $this->movieStatus;
+    }
+
+    public function setMovieStatus(?bool $movieStatus): self
+    {
+        $this->movieStatus = $movieStatus;
+
+        return $this;
+    }
+
+    public function getMovieCoverImage(): ?string
+    {
+        return $this->movieCoverImage;
+    }
+
+    public function setMovieCoverImage(?string $movieCoverImage): self
+    {
+        $this->movieCoverImage = $movieCoverImage;
+
+        return $this;
+    }
+
+    public function getMovieTags(): ?array
+    {
+        return $this->movieTags;
+    }
+
+    public function setMovieTags(?array $movieTags): self
+    {
+        $this->movieTags = $movieTags;
+
+        return $this;
+    }
+
+    public function getMovieRelation(): ?array
+    {
+        return $this->movieRelation;
+    }
+
+    public function setMovieRelation(?array $movieRelation): self
+    {
+        $this->movieRelation = $movieRelation;
+
+        return $this;
+    }
+
+   
 }
