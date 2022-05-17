@@ -7,6 +7,7 @@ import Footer from '../Footer';
 fetch("https://checkboar-api.herokuapp.com/api/elements/", {
   "method": "GET",
   "headers": {
+    "host":"checkboar-api.herokuapp.com",
     "content-type": "application/json",
     "accept": "application/json"
   },
