@@ -4,6 +4,19 @@ import '../../styles/Home.css';
 import '../../styles/Global.css';
 import Footer from '../Footer';
 
+fetch("https://checkboar-api.herokuapp.com/api/elements/", {
+  "method": "GET",
+  "headers": {
+    "host":"checkboar-api.herokuapp.com",
+    "content-type": "application/json",
+    "accept": "application/json"
+  },
+  "body": JSON.stringify({
+    name: this.state.name,
+    notes: this.state.notes
+  })
+});
+
 function Home() {
   return (
     <>
