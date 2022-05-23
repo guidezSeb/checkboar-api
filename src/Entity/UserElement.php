@@ -127,8 +127,6 @@ class UserElement
         return $this;
     }
 
-
-
     public function getUserProgression(): ?Status
     {
         return $this->userProgression;
