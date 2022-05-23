@@ -21,7 +21,7 @@ class TagsElement
     #[ORM\JoinColumn(nullable: false)]
     private $elementid;
 
-    #[ORM\ManyToMany(targetEntity: tags::class)]
+    #[ORM\ManyToMany(targetEntity: Tags::class)]
     private $tagId;
 
     public function __construct()
@@ -48,14 +48,14 @@ class TagsElement
     }
 
     /**
-     * @return Collection<int, tags>
+     * @return Collection<int, Tags>
      */
     public function getTagId(): Collection
     {
         return $this->tagId;
     }
 
-    public function addTagId(tags $tagId): self
+    public function addTagId(Tags $tagId): self
     {
         if (!$this->tagId->contains($tagId)) {
             $this->tagId[] = $tagId;
@@ -64,7 +64,7 @@ class TagsElement
         return $this;
     }
 
-    public function removeTagId(tags $tagId): self
+    public function removeTagId(Tags $tagId): self
     {
         $this->tagId->removeElement($tagId);
 
