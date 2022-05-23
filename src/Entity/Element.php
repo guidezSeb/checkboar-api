@@ -20,13 +20,10 @@ class Element
     #[ORM\Column(type: 'string', length: 255)]
     private $ElementName;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $elementAuthor;
-
     #[ORM\Column(type: 'text', nullable: true)]
     private $elementDescription;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $elementStatus;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -35,18 +32,11 @@ class Element
     #[ORM\Column(type: 'integer', nullable: true)]
     private $elementRelation;
 
-  
-
     #[ORM\Column(type: 'date', nullable: true)]
-    private $elementDateStart;
-
-    #[ORM\Column(type: 'date', nullable: true)]
-    private $elementDateEnd;
+    private $elementDateRelease;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private $elementTotalChapter;
-
- 
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
     private $elementTags;
@@ -54,6 +44,27 @@ class Element
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $elementType;
+
+    #[ORM\ManyToOne(targetEntity: Nationality::class)]
+    private $elementNationality;
+
+    #[ORM\ManyToOne(targetEntity: Format::class)]
+    private $elementFormat;
+
+    #[ORM\ManyToOne(targetEntity: Author::class)]
+    private $elementAuthor;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $elementUserScored;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $elementSumScore;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $elementCountUser;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $elementDuration;
 
     public function __construct()
     {
@@ -103,12 +114,12 @@ class Element
         return $this;
     }
 
-    public function getElementStatus(): ?bool
+    public function getElementStatus(): ?string
     {
         return $this->elementStatus;
     }
 
-    public function setElementStatus(?bool $elementStatus): self
+    public function setElementStatus(?string $elementStatus): self
     {
         $this->elementStatus = $elementStatus;
 
@@ -138,32 +149,18 @@ class Element
 
         return $this;
     }
-
-
-
-    public function getElementDateStart(): ?\DateTimeInterface
+    public function getElementDateRelease(): ?\DateTimeInterface
     {
-        return $this->elementDateStart;
+        return $this->elementDateRelease;
     }
 
-    public function setElementDateStart(?\DateTimeInterface $elementDateStart): self
+    public function setElementDateRelease(?\DateTimeInterface $elementDateRelease): self
     {
-        $this->elementDateStart = $elementDateStart;
+        $this->elementDateRelease = $elementDateRelease;
 
         return $this;
     }
 
-    public function getElementDateEnd(): ?\DateTimeInterface
-    {
-        return $this->elementDateEnd;
-    }
-
-    public function setElementDateEnd(?\DateTimeInterface $elementDateEnd): self
-    {
-        $this->elementDateEnd = $elementDateEnd;
-
-        return $this;
-    }
 
     public function getElementTotalChapter(): ?int
     {
@@ -217,6 +214,78 @@ class Element
     public function setElementType(?ElementType $elementType): self
     {
         $this->elementType = $elementType;
+
+        return $this;
+    }
+
+    public function getElementNationality(): ?Nationality
+    {
+        return $this->elementNationality;
+    }
+
+    public function setElementNationality(?Nationality $elementNationality): self
+    {
+        $this->elementNationality = $elementNationality;
+
+        return $this;
+    }
+
+    public function getElementFormat(): ?Format
+    {
+        return $this->elementFormat;
+    }
+
+    public function setElementFormat(?Format $elementFormat): self
+    {
+        $this->elementFormat = $elementFormat;
+
+        return $this;
+    }
+
+    public function getElementUserScored(): ?int
+    {
+        return $this->elementUserScored;
+    }
+
+    public function setElementUserScored(?int $elementUserScored): self
+    {
+        $this->elementUserScored = $elementUserScored;
+
+        return $this;
+    }
+
+    public function getElementSumScore(): ?float
+    {
+        return $this->elementSumScore;
+    }
+
+    public function setElementSumScore(?float $elementSumScore): self
+    {
+        $this->elementSumScore = $elementSumScore;
+
+        return $this;
+    }
+
+    public function getElementCountUser(): ?int
+    {
+        return $this->elementCountUser;
+    }
+
+    public function setElementCountUser(?int $elementCountUser): self
+    {
+        $this->elementCountUser = $elementCountUser;
+
+        return $this;
+    }
+
+    public function getElementDuration(): ?int
+    {
+        return $this->elementDuration;
+    }
+
+    public function setElementDuration(?int $elementDuration): self
+    {
+        $this->elementDuration = $elementDuration;
 
         return $this;
     }
