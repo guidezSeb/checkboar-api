@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Manga;
+use App\Entity\Status;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Manga|null find($id, $lockMode = null, $lockVersion = null)
- * @method Manga|null findOneBy(array $criteria, array $orderBy = null)
- * @method Manga[]    findAll()
- * @method Manga[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Status|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Status|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Status[]    findAll()
+ * @method Status[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MangaRepository extends ServiceEntityRepository
+class StatusRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Manga::class);
+        parent::__construct($registry, Status::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Manga $entity, bool $flush = true): void
+    public function add(Status $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class MangaRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Manga $entity, bool $flush = true): void
+    public function remove(Status $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class MangaRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Manga[] Returns an array of Manga objects
+    //  * @return Status[] Returns an array of Status objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
+            ->orderBy('s.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class MangaRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Manga
+    public function findOneBySomeField($value): ?Status
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

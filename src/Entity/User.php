@@ -35,12 +35,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserElement::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Comment::class, orphanRemoval: true)]
+    private $userComment;
+
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: UserElement::class, orphanRemoval: true)]
     private $userElements;
+
+  
     
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->userComment = new ArrayCollection();
         $this->userElements = new ArrayCollection();
     }
 
@@ -159,6 +165,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @return Collection<int, Comment>
+     */
+    public function getUserComment(): Collection
+    {
+        return $this->userComment;
+    }
+
+    public function addUserComment(Comment $userComment): self
+    {
+        if (!$this->userComment->contains($userComment)) {
+            $this->userComment[] = $userComment;
+            $userComment->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserComment(Comment $userComment): self
+    {
+        if ($this->userComment->removeElement($userComment)) {
+            // set the owning side to null (unless already changed)
+            if ($userComment->getUserId() === $this) {
+                $userComment->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection<int, UserElement>
      */
     public function getUserElements(): Collection
@@ -170,7 +206,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->userElements->contains($userElement)) {
             $this->userElements[] = $userElement;
-            $userElement->setUsername($this);
+            $userElement->setUserId($this);
         }
 
         return $this;
@@ -180,11 +216,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->userElements->removeElement($userElement)) {
             // set the owning side to null (unless already changed)
-            if ($userElement->getUsername() === $this) {
-                $userElement->setUsername(null);
+            if ($userElement->getUserId() === $this) {
+                $userElement->setUserId(null);
             }
         }
 
         return $this;
     }
+
+
+
 }

@@ -15,47 +15,28 @@ class Comment
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $text;
 
-    #[ORM\Column(type: 'integer')]
-    private $commentID;
 
     #[ORM\Column(type: 'datetime')]
     private $commentDate;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $user;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $commentText;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userComment')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $userId;
+
+    #[ORM\ManyToOne(targetEntity: Element::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $elementId;
+
+   
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    public function getCommentID(): ?int
-    {
-        return $this->commentID;
-    }
-
-    public function setCommentID(int $commentID): self
-    {
-        $this->commentID = $commentID;
-
-        return $this;
-    }
 
     public function getCommentDate(): ?\DateTimeInterface
     {
@@ -69,15 +50,40 @@ class Comment
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getCommentText(): ?string
     {
-        return $this->user;
+        return $this->commentText;
     }
 
-    public function setUser(?User $user): self
+    public function setCommentText(?string $commentText): self
     {
-        $this->user = $user;
+        $this->commentText = $commentText;
 
         return $this;
     }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getElementId(): ?Element
+    {
+        return $this->elementId;
+    }
+
+    public function setElementId(?Element $elementId): self
+    {
+        $this->elementId = $elementId;
+
+        return $this;
+    }
+
 }
