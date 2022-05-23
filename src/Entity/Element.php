@@ -46,12 +46,14 @@ class Element
     #[ORM\Column(type: 'integer', nullable: true)]
     private $elementTotalChapter;
 
-    #[ORM\ManyToOne(targetEntity: ElementType::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $elementType;
+ 
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
     private $elementTags;
+
+    #[ORM\ManyToOne(targetEntity: ElementType::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $elementType;
 
     public function __construct()
     {
@@ -175,17 +177,7 @@ class Element
         return $this;
     }
 
-    public function getElementType(): ?ElementType
-    {
-        return $this->elementType;
-    }
-
-    public function setElementType(?ElementType $elementType): self
-    {
-        $this->elementType = $elementType;
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection<int, TagsElement>
@@ -213,6 +205,18 @@ class Element
                 $elementTag->setElementid(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getElementType(): ?ElementType
+    {
+        return $this->elementType;
+    }
+
+    public function setElementType(?ElementType $elementType): self
+    {
+        $this->elementType = $elementType;
 
         return $this;
     }
