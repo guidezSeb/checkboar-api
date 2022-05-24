@@ -11,10 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['user:read']],
-    'denormalization_context' => ['groups' => ['user:write']],
-])]
+#[ApiResource()]
 #[ORM\Table(name: "`user`")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -62,7 +59,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     public function __construct()
     {
-        $this->comments = new ArrayCollection();
         $this->userComment = new ArrayCollection();
         $this->userElements = new ArrayCollection();
     }
