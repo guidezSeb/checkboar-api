@@ -11,7 +11,10 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource()]
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['user:read']],
+    'denormalization_context' => ['groups' => ['user:write']],
+])]
 #[ORM\Table(name: "`user`")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
