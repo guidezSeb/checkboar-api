@@ -21,22 +21,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["user:read", "user:write"])]
     private $id;
 
    
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Groups(["user:read", "user:write"])]
     private $username;
 
   
     #[ORM\Column(type: 'json')]
+    #[Groups(["user:read"])]
     private $roles = [];
 
  
     #[ORM\Column(type: 'string')]
+    #[Groups(["user:write"])]
     private $password;
 
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["user:read", "user:write"])]
     private $userImage;
     
 
@@ -48,14 +53,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
     private $userCompleteName;
 
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups(["user:read", "user:write"])]
     private $userGender;
 
    
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
     private $email;
     
     public function __construct()
@@ -223,12 +231,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
  
 
-    public function getUserGender(): ?bool
+    public function getUserGender(): ?string
     {
         return $this->userGender;
     }
 
-    public function setUserGender(?bool $userGender): self
+    public function setUserGender(?string $userGender): self
     {
         $this->userGender = $userGender;
 
