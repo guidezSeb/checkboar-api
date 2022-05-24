@@ -18,9 +18,6 @@ class Author
     #[ORM\Column(type: 'string', length: 255)]
     private $authorName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $authorFirstname;
-
     #[ORM\Column(type: 'date', nullable: true)]
     private $authorBirthDate;
 
@@ -30,7 +27,7 @@ class Author
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $authorImage;
 
-    #[ORM\ManyToOne(targetEntity: Nationality::class)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $authorNationality;
 
     public function getId(): ?int
@@ -46,18 +43,6 @@ class Author
     public function setAuthorName(string $authorName): self
     {
         $this->authorName = $authorName;
-
-        return $this;
-    }
-
-    public function getAuthorFirstname(): ?string
-    {
-        return $this->authorFirstname;
-    }
-
-    public function setAuthorFirstname(string $authorFirstname): self
-    {
-        $this->authorFirstname = $authorFirstname;
 
         return $this;
     }
@@ -98,12 +83,12 @@ class Author
         return $this;
     }
 
-    public function getAuthorNationality(): ?Nationality
+    public function getAuthorNationality(): ?string
     {
         return $this->authorNationality;
     }
 
-    public function setAuthorNationality(?Nationality $authorNationality): self
+    public function setAuthorNationality(?string $authorNationality): self
     {
         $this->authorNationality = $authorNationality;
 

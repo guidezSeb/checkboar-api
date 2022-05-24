@@ -45,7 +45,7 @@ class Element
     #[ORM\JoinColumn(nullable: false)]
     private $elementType;
 
-    #[ORM\ManyToOne(targetEntity: Nationality::class)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $elementNationality;
 
     #[ORM\ManyToOne(targetEntity: Format::class)]
@@ -218,12 +218,12 @@ class Element
         return $this;
     }
 
-    public function getElementNationality(): ?Nationality
+    public function getElementNationality(): ?string
     {
         return $this->elementNationality;
     }
 
-    public function setElementNationality(?Nationality $elementNationality): self
+    public function setElementNationality(?string $elementNationality): self
     {
         $this->elementNationality = $elementNationality;
 
