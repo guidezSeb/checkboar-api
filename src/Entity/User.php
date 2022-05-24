@@ -24,38 +24,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read"])]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Groups(["user:read", "user:write"])]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $username;
 
-    #[ORM\Column(type: 'json')]
     #[Groups(["user:read"])]
+    #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    #[ORM\Column(type: 'string')]
     #[Groups(["user:write"])]
+    #[ORM\Column(type: 'string')]
     private $password;
 
-    #[ORM\Column(type: 'string', length: 255)]
     #[Groups(["user:read", "user:write"])]
+    #[ORM\Column(type: 'string', length: 255)]
     private $userImage;
     
-    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Comment::class, orphanRemoval: true)]
     #[Groups(["user:read", "user:write"])]
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Comment::class, orphanRemoval: true)]
     private $userComment;
 
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: UserElement::class, orphanRemoval: true)]
     #[Groups(["user:read", "user:write"])]
     private $userElements;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $userCompleteName;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
     #[Groups(["user:read", "user:write"])]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $userGender;
 
+    #[Groups(["user:read", "user:write"])]
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $email;
     
