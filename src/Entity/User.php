@@ -11,35 +11,52 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource]
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['user:read']],
+    'denormalization_context' => ['groups' => ['user:write']],
+])]
 #[ORM\Table(name: "`user`")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["user:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Groups(["user:read", "user:write"])]
     private $username;
 
     #[ORM\Column(type: 'json')]
+    #[Groups(["user:read"])]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+    #[Groups(["user:write"])]
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["user:read", "user:write"])]
     private $userImage;
     
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
-    private $comments;
-
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Comment::class, orphanRemoval: true)]
+    #[Groups(["user:read", "user:write"])]
     private $userComment;
 
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: UserElement::class, orphanRemoval: true)]
+    #[Groups(["user:read", "user:write"])]
     private $userElements;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $userCompleteName;
+
+
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[Groups(["user:read", "user:write"])]
+    private $userGender;
 
   
     
@@ -134,35 +151,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-     /**
-     * @return Collection<int, Comment>
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUsername($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUsername() === $this) {
-                $comment->setUsername(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Comment>
@@ -220,6 +208,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $userElement->setUserId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserCompleteName(): ?string
+    {
+        return $this->userCompleteName;
+    }
+
+    public function setUserCompleteName(?string $userCompleteName): self
+    {
+        $this->userCompleteName = $userCompleteName;
+
+        return $this;
+    }
+
+ 
+
+    public function getUserGender(): ?bool
+    {
+        return $this->userGender;
+    }
+
+    public function setUserGender(?bool $userGender): self
+    {
+        $this->userGender = $userGender;
 
         return $this;
     }
