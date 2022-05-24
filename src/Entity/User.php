@@ -52,13 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read", "user:write"])]
     private $userCompleteName;
 
-
-
     #[ORM\Column(type: 'boolean', nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $userGender;
-
-  
     
     public function __construct()
     {
