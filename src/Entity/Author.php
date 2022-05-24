@@ -30,6 +30,9 @@ class Author
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $authorNationality;
 
+    #[ORM\Column(type: 'string', length: 20, nullable: true)]
+    private $authorGender;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class Author
     public function setAuthorNationality(?string $authorNationality): self
     {
         $this->authorNationality = $authorNationality;
+
+        return $this;
+    }
+
+    public function getAuthorGender(): ?string
+    {
+        return $this->authorGender;
+    }
+
+    public function setAuthorGender(?string $authorGender): self
+    {
+        $this->authorGender = $authorGender;
 
         return $this;
     }
