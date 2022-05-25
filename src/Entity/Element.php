@@ -7,9 +7,14 @@ use App\Repository\ElementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: ElementRepository::class)]
-#[ApiResource]
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['element:read']],
+    'denormalization_context' => ['groups' => ['element:write']],
+])]
 class Element
 {
     #[ORM\Id]
@@ -52,6 +57,7 @@ class Element
     private $elementFormat;
 
     #[ORM\ManyToOne(targetEntity: Author::class)]
+    #[Groups(["element:write"])]
     private $elementAuthor;
 
     #[ORM\Column(type: 'integer', nullable: true)]
