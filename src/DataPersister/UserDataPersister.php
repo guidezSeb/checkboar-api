@@ -8,7 +8,7 @@ use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 
-abstract class UserDataPersister implements ContextAwareDataPersisterInterface, PasswordAuthenticatedUserInterface
+class UserDataPersister implements ContextAwareDataPersisterInterface
 {
     private $_entityManager;
     private $_passwordEncoder;
