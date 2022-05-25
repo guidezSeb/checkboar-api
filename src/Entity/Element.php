@@ -20,37 +20,48 @@ class Element
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["element:read","element:write"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["element:read","element:write"])]
     private $ElementName;
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementDescription;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementStatus;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementCoverImage;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementRelation;
 
     #[ORM\Column(type: 'date', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementDateRelease;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementTotalChapter;
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
+    #[Groups(["element:write"])]
     private $elementTags;
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["element:write"])]
     private $elementType;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementNationality;
 
     #[ORM\ManyToOne(targetEntity: Format::class)]
@@ -62,15 +73,19 @@ class Element
     private $elementAuthor;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementUserScored;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementSumScore;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementCountUser;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["element:read","element:write"])]
     private $elementDuration;
 
     public function __construct()
