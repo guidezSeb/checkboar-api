@@ -39,8 +39,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
  
     #[ORM\Column(type: 'string')]
+    #[Groups(["user:read"])]
     private $password;
 
+    #[Groups(["user:write"])]
+    private $plainPassword;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
