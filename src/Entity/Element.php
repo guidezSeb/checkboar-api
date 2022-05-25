@@ -54,6 +54,7 @@ class Element
     private $elementNationality;
 
     #[ORM\ManyToOne(targetEntity: Format::class)]
+    #[Groups(["element:write"])]
     private $elementFormat;
 
     #[ORM\ManyToOne(targetEntity: Author::class)]
@@ -96,12 +97,12 @@ class Element
         return $this;
     }
 
-    public function getElementAuthor(): ?string
+    public function getElementAuthor(): ?Author
     {
         return $this->elementAuthor;
     }
 
-    public function setElementAuthor(?string $elementAuthor): self
+    public function setElementAuthor(?Author $elementAuthor): self
     {
         $this->elementAuthor = $elementAuthor;
 
