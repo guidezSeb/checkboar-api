@@ -15,7 +15,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        UserPasswordEncoderInterface $passwordEncoder
+        PasswordAuthenticatedUserInterface $passwordEncoder
     ) {
         $this->_entityManager = $entityManager;
         $this->_passwordEncoder = $passwordEncoder;
