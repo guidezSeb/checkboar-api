@@ -57,7 +57,7 @@ class Element
     private $elementFormat;
 
     #[ORM\ManyToOne(targetEntity: Author::class)]
-    #[Groups(["element:read", "element:write"])]
+    #[Groups(["element:write"])]
     private $elementAuthor;
 
     #[ORM\Column(type: 'integer', nullable: true)]
