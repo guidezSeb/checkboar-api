@@ -52,12 +52,12 @@ class Element
     private $elementTotalChapter;
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
-    #[Groups(["element:write"])]
+    #[Groups(["element:read","element:write"])]
     private $elementTags;
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["element:write"])]
+    #[Groups(["element:read","element:write"])]
     private $elementType;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -65,11 +65,11 @@ class Element
     private $elementNationality;
 
     #[ORM\ManyToOne(targetEntity: Format::class)]
-    #[Groups(["element:write"])]
+    #[Groups(["element:read","element:write"])]
     private $elementFormat;
 
     #[ORM\ManyToOne(targetEntity: Author::class)]
-    #[Groups(["element:write"])]
+    #[Groups(["element:read","element:write"])]
     private $elementAuthor;
 
     #[ORM\Column(type: 'integer', nullable: true)]
