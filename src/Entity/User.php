@@ -40,6 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
  
     #[ORM\Column(type: 'string')]
+    #[Groups(["user:read"])]
     private $password;
 
     #[Groups(["user:read","user:write"])]
@@ -159,7 +160,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
 
