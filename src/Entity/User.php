@@ -45,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(["user:read","user:write"])]
     #[SerializedName('password')]
     private $plainPassword;
-
+    
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $userImage;
@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(["user:read", "user:write"])]
     private $email;
-    
+
     public function __construct()
     {
         $this->userComment = new ArrayCollection();
@@ -257,6 +257,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
