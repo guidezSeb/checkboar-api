@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(attributes: [
@@ -41,8 +42,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    #[SerializedName('password')]
     #[Groups(["user:read","user:write"])]
+    #[SerializedName('password')]
     private $plainPassword;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
