@@ -26,6 +26,6 @@ services:
     # App\DataPersister\UserDataPersister: ~
         # Uncomment only if autoconfiguration is disabled
         #tags: [ 'api_platform.data_persister' ]
-    app.custom_authenticator:
-        class: App\Security\CustomAuthenticator
-        parent: lexik_jwt_authentication.security.jwt_authenticator
+    # app.custom_authenticator:
+    #     class: App\Security\CustomAuthenticator
+    #     parent: lexik_jwt_authentication.security.jwt_authenticator

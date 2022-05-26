@@ -33,7 +33,7 @@ security:
             # anonymous: true
             provider: app_user_provider
             jwt:
-                authenticator: app.custom_authenticator
+                authenticator: lexik_jwt_authentication.jwt_token_authenticator
         main:
             lazy: true
             provider: app_user_provider
