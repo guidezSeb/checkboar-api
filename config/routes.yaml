@@ -9,3 +9,7 @@ kernel:
 authentication_token:
     path: /api/login
     methods: ['POST']
+
+signin:
+    path: /api/signin
+    methods: ['POST']
