@@ -10,10 +10,10 @@ authentication_token:
     path: /api/login
     methods: ['POST']
 
-signin:
-    path: /api/signin
-    methods: ['POST']
+# signin:
+#     path: /api/signin
+#     methods: ['POST']
 
 signup:
-    path: /api/signup
+    path: /api/register
     methods: ['POST']
