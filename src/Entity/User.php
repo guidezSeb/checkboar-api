@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
     'normalization_context' => ['groups' => ['user:read']],
     'denormalization_context' => ['groups' => ['user:write']],
 ], 
-itemOperations: [
+collectionOperations: [
     'get', 'get_mine' => [
         'method' => 'GET',
         'path' => '/users/mine',

@@ -13,9 +13,6 @@ authentication_token:
 signin:
     path: /api/signin
     methods: ['POST']
-    defaults:
-        _controller: App\Controller\SignInController::__invoke
-        _api_resource_class: App\Entity\User
 
 # signup:
 #     path: /api/signup
