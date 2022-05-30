@@ -18,13 +18,7 @@ use App\Controller\GetMyUserController;
 #[ApiResource(attributes: [
     'normalization_context' => ['groups' => ['user:read']],
     'denormalization_context' => ['groups' => ['user:write']],
-], 
-collectionOperations: [
-    'get', 'get_mine' => [
-        'method' => 'GET',
-        'path' => '/users/mine',
-        'controller' => GetMyUserController::class,
-    ],]),]
+] )]
 #[ORM\Table(name: "`user`")]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
