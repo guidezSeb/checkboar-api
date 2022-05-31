@@ -14,6 +14,6 @@ authentication_token:
 #     path: /api/signin
 #     methods: ['POST']
 
-signup:
+register:
     path: /api/register
     methods: ['POST']
