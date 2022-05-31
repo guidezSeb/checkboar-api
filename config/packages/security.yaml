@@ -28,18 +28,6 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        login:
-            pattern: ^/api/login
-            stateless: true
-            # anonymous: true
-            methods:   [POST]
-            json_login:
-                check_path: /api/login
-                username_path: username
-                email_path: email
-                password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
         register:
             pattern: ^/api/register
             stateless: true
@@ -48,6 +36,7 @@ security:
             json_login:
                 check_path: /api/register
                 username_path: username
+                email_path: email
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
