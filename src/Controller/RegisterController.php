@@ -22,24 +22,15 @@ class RegisterController extends AbstractController
     
         public function __invoke(Request $request)
         {
-            //check format donnée sinon renvoie erreur avec this->json create user
-    
-
-            //  verification des données et de leur format
-       
-      
-            // création d'un objet user et attribution de ses parametres
-
-            dump($request->query->all());
-            dd($request->request->all());
+            $data = json_decode($request->getContent(), true);
 
 
-            if (($username = $request->request->get('username')) && ($password = $request->request->get('password')) && ($email = $request->request->get('email'))) {
+            if (array_key_exists('username', $data) && array_key_exists('password', $data) && array_key_exists('email', $data)) {
                 $user = new User();
 
-                $user->setUsername($username);
-                $password->setPassword($password);
-                $email->setEmail($email);
+                $user->setUsername($data['username']);
+                $password->setPassword($data['password']);
+                $email->setEmail($data['email']);
 
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
