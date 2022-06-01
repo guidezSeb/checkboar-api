@@ -38,7 +38,7 @@ class RegisterController extends AbstractController
             }
 
             // envoi dans la bdd (voir entityManager)
-            $entityManager = $this->getManager();
+            $entityManager =$doctrine->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             
