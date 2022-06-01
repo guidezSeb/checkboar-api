@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegisterController extends AbstractController
 {
