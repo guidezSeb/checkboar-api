@@ -16,32 +16,24 @@ class RegisterController extends AbstractController
             $this->repository = $repository;
         }
     
-        public function __invoke(Request $request): Response
+        public function __invoke(Request $request)
         {
             //check format donnée sinon renvoie erreur avec this->json create user
     
 
             //  verification des données et de leur format
        
-            // handle the submit (will only happen on POST)
-            $form->handleRequest($request);
+      
             // création d'un objet user et attribution de ses parametres
             $user = new User();
-            $username = $doctrine->getRepository(User::class)->find($username);
-            $password = $doctrine->getRepository(User::class)->find($password);
-            $email = $doctrine->getRepository(User::class)->find($email);
 
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                if (!$username) {
-                    $user->setUsername($request->request->get('username'));
-                }
-                if (!$password) {
-                    $user->setPassword($request->request->get('password'));
-                }
-                if (!$email) {
-                    $user->setEmail($request->request->get('email'));
-                }
+            if ($username = $request->request->get('username') && $password = $request->request->get('password') && $email = $request->request->get('email') ) {
+                $user->setUsername($username);
+                $password->setPassword($password);
+                $email->setEmail($email);
+
+
             }
 
             // envoi dans la bdd (voir entityManager)
@@ -49,9 +41,8 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             
-            // retourne l'utilisateur
-            return new Response('New User:  '.$user->getId());
-
+            // retourne l'utilisateur dans un json
+            return $this->json(['user' => $user]);
         }
     
 }
