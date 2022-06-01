@@ -30,6 +30,9 @@ class RegisterController extends AbstractController
       
             // création d'un objet user et attribution de ses parametres
 
+            dump($request->query->all());
+            dd($request->request->all());
+
 
             if (($username = $request->request->get('username')) && ($password = $request->request->get('password')) && ($email = $request->request->get('email'))) {
                 $user = new User();
@@ -43,7 +46,7 @@ class RegisterController extends AbstractController
                 return $this->json(['user' => $user]);
             }
             else{
-                return $this->json(['error' => 'Bad request', 400]);
+                return $this->json(['error' => 'Bad request'], 400);
             }
 
             
