@@ -32,7 +32,7 @@ collectionOperations: [
     ],
     'post', 'register' => [
         'method' => 'POST',
-        'path' => '/users/register',
+        'path' => '/register',
         'controller' => RegisterController::class,
     ],]),]
 #[ORM\Table(name: "`user`")]
