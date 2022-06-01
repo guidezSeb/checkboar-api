@@ -13,6 +13,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 use App\Controller\GetMyUserController;
+use App\Controller\RegisterController;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(attributes: [
