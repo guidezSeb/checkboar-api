@@ -15,13 +15,13 @@ class RegisterController extends AbstractController
     private $repository;
     private $entityManager;
 
-        public function __construct(UserRepository $repository, EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordHasher)
+        public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
         {
             $this->repository = $repository;
             $this->entityManager = $entityManager;
         }
     
-        public function __invoke(Request $request)
+        public function __invoke(Request $request,UserPasswordHasherInterface $passwordHasher)
         {
             $data = json_decode($request->getContent(), true);
 
