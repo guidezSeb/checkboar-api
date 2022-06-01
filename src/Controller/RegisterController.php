@@ -14,7 +14,7 @@ class RegisterController extends AbstractController
     private $repository;
     private $entityManager;
 
-        public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
+        public function __construct(UserRepository $repository, EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordHasher)
         {
             $this->repository = $repository;
             $this->entityManager = $entityManager;
