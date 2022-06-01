@@ -29,20 +29,19 @@ class RegisterController extends AbstractController
        
       
             // création d'un objet user et attribution de ses parametres
-            $user = new User();
 
 
-            if ($username = $request->request->get('username') && $password = $request->request->get('password') && $email = $request->request->get('email') ) {
+            if (($username = $request->request->get('username')) && ($password = $request->request->get('password')) && ($email = $request->request->get('email'))) {
+                $user = new User();
+                
                 $user->setUsername($username);
                 $password->setPassword($password);
                 $email->setEmail($email);
 
-
+                $this->entityManager->persist($user);
+                $this->entityManager->flush();
             }
 
-            // envoi dans la bdd (voir entityManager)
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
             
             // retourne l'utilisateur dans un json
             return $this->json(['user' => $user]);
