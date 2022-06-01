@@ -7,14 +7,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UserRepository;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 
 class RegisterController extends AbstractController
 {
     private $repository;
+    private $entityManager;
 
-        public function __construct(UserRepository $repository)
+        public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
         {
             $this->repository = $repository;
+            $this->entityManager = $entityManager;
         }
     
         public function __invoke(Request $request)
@@ -38,9 +41,8 @@ class RegisterController extends AbstractController
             }
 
             // envoi dans la bdd (voir entityManager)
-            $entityManager =$doctrine->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
             
             // retourne l'utilisateur dans un json
             return $this->json(['user' => $user]);
