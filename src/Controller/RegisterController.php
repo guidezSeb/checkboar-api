@@ -33,18 +33,22 @@ class RegisterController extends AbstractController
 
             if (($username = $request->request->get('username')) && ($password = $request->request->get('password')) && ($email = $request->request->get('email'))) {
                 $user = new User();
-                
+
                 $user->setUsername($username);
                 $password->setPassword($password);
                 $email->setEmail($email);
 
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
+                return $this->json(['user' => $user]);
+            }
+            else{
+                return $this->json(['error' => 'Bad request', 400]);
             }
 
             
             // retourne l'utilisateur dans un json
-            return $this->json(['user' => $user]);
+    
         }
     
 }
