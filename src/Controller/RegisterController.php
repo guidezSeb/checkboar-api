@@ -27,9 +27,13 @@ class RegisterController extends AbstractController
 
             if (array_key_exists('username', $data) && array_key_exists('password', $data) && array_key_exists('email', $data)) {
                 $user = new User();
-
+                $plaintextPassword = $data['password'];
+                $hashedPassword = $passwordHasher->hashPassword(
+                    $user,
+                    $plaintextPassword
+                );
+                $user->setPassword($hashedPassword);
                 $user->setUsername($data['username']);
-                $user->setPassword($data['password']);
                 $user->setEmail($data['email']);
 
                 $this->entityManager->persist($user);

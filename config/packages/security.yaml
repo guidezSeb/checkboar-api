@@ -65,7 +65,15 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY }
+        
+    password_hashers:
+            # auto hasher with default options for the User class (and children)
+            App\Entity\User: 'auto'
 
+            # auto hasher with custom options for all PasswordAuthenticatedUserInterface instances
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: 'auto'
+                cost:      15
 when@test:
     security:
         password_hashers:
