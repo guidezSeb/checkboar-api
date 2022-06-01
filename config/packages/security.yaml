@@ -28,11 +28,6 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        register:
-                pattern: ^/api/register
-                stateless: true
-                # anonymous: true
-                methods:   [POST]
         api:
             pattern: ^/api/
             stateless: true
