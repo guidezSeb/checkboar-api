@@ -29,6 +29,16 @@ collectionOperations: [
         'method' => 'POST',
         'path' => '/users/mine',
         'controller' => GetMyUserController::class,
+    ],
+    'get', 'register' => [
+        'method' => 'GET',
+        'path' => '/users/register',
+        'controller' => RegisterController::class,
+    ],
+    'post', 'register' => [
+        'method' => 'POST',
+        'path' => '/users/register',
+        'controller' => RegisterController::class,
     ],]),]
 #[ORM\Table(name: "`user`")]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
