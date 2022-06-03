@@ -48,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
    
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $username;
 
   
