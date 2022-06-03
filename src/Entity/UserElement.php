@@ -60,12 +60,6 @@ class UserElement
     #[Groups(["elementUser:read","elementUser:write"])]
     private $elementId;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $userFavorite;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $userProgression;
-
 
   
 
@@ -98,17 +92,6 @@ class UserElement
         return $this;
     }
 
-    public function getUserFavorite(): ?bool
-    {
-        return $this->userFavorite;
-    }
-
-    public function setUserFavorite(?bool $userFavorite): self
-    {
-        $this->userFavorite = $userFavorite;
-
-        return $this;
-    }
 
    
 
@@ -148,18 +131,7 @@ class UserElement
         return $this;
     }
 
-    public function getUserProgression(): ?int
-    {
-        return $this->userProgression;
-    }
-
-    public function setUserProgression(?int $userProgression): self
-    {
-        $this->userProgression = $userProgression;
-
-        return $this;
-    }
-
+    
     public function getUserId(): ?User
     {
         return $this->userId;
