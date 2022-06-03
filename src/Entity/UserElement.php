@@ -28,9 +28,9 @@ class UserElement
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userStatus;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    #[Groups(["elementUser:read","elementUser:write"])]
-    private $userFavorite;
+    // #[ORM\Column(type: 'boolean', nullable: true)]
+    // #[Groups(["elementUser:read","elementUser:write"])]
+    // private $userFavorite;
 
 
 
@@ -46,9 +46,9 @@ class UserElement
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userDateSeen;
     
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["elementUser:read","elementUser:write"])]
-    private $userProgression;
+    // #[ORM\Column(type: 'integer', nullable: true)]
+    // #[Groups(["elementUser:read","elementUser:write"])]
+    // private $userProgression;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userElements')]
     #[ORM\JoinColumn(nullable: false)]
@@ -59,6 +59,12 @@ class UserElement
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(["elementUser:read","elementUser:write"])]
     private $elementId;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $userFavorite;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $userProgression;
 
 
   
