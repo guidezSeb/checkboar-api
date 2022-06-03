@@ -36,7 +36,7 @@ class Element
     private $elementStatus;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementCoverImage;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -44,7 +44,7 @@ class Element
     private $elementRelation;
 
     #[ORM\Column(type: 'date', nullable: true)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementDateRelease;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -61,7 +61,7 @@ class Element
     private $elementType;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementNationality;
 
     #[ORM\ManyToOne(targetEntity: Format::class)]
@@ -69,7 +69,7 @@ class Element
     private $elementFormat;
 
     #[ORM\ManyToOne(targetEntity: Author::class)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementAuthor;
 
     #[ORM\Column(type: 'integer', nullable: true)]
