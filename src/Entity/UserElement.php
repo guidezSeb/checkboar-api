@@ -7,7 +7,10 @@ use App\Repository\UserElementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserElementRepository::class)]
-#[ApiResource]
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['elementUser:read']],
+    'denormalization_context' => ['groups' => ['elementUser:write']],
+])]
 class UserElement
 {
     #[ORM\Id]

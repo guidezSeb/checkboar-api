@@ -20,11 +20,11 @@ class Element
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $ElementName;
 
     #[ORM\Column(type: 'text', nullable: true)]
@@ -57,7 +57,7 @@ class Element
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementType;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
