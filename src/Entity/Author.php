@@ -14,11 +14,11 @@ class Author
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["element:read"])]
+    #[Groups(["element:read","elementUser:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["element:read"])]
+    #[Groups(["element:read","elementUser:read"])]
     private $authorName;
 
     #[ORM\Column(type: 'date', nullable: true)]
