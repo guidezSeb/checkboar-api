@@ -28,7 +28,7 @@ class UserElement
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userStatus;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: 'boolean', nullable: true, default: false)]
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userFavorite;
 
@@ -45,9 +45,7 @@ class UserElement
     #[ORM\Column(type: 'date', nullable: true)]
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userDateSeen;
-
-
-
+    
     #[ORM\Column(type: 'integer', nullable: true)]
     #[Groups(["elementUser:read","elementUser:write"])]
     private $userProgression;
