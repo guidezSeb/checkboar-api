@@ -16,39 +16,49 @@ class UserElement
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $id;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $score;
 
     #[ORM\Column(type: 'string', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userStatus;
 
     #[ORM\Column(type: 'bool', nullable: true)]
-    private $userFavorite = [];
+    #[Groups(["elementUser:read","elementUser:write"])]
+    private $userFavorite;
 
 
 
     #[ORM\Column(type: 'date', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userDatestart;
 
     #[ORM\Column(type: 'date', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userdateEnd;
 
     #[ORM\Column(type: 'date', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userDateSeen;
 
 
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userProgression;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userElements')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $userId;
 
     #[ORM\ManyToOne(targetEntity: Element::class)]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["elementUser:read","elementUser:write"])]
     private $elementId;
 
     public function getId(): ?int
