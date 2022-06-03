@@ -18,10 +18,10 @@ class UserElement
     #[ORM\Column(type: 'float', nullable: true)]
     private $score;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private $userStatus;
 
-    #[ORM\Column(type: 'array', nullable: true)]
+    #[ORM\Column(type: 'bool', nullable: true)]
     private $userFavorite = [];
 
 
@@ -37,7 +37,7 @@ class UserElement
 
 
 
-    #[ORM\OneToOne(targetEntity: Status::class, cascade: ['persist', 'remove'])]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $userProgression;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userElements')]
@@ -65,24 +65,24 @@ class UserElement
         return $this;
     }
 
-    public function getUserStatus(): ?int
+    public function getUserStatus(): ?string
     {
         return $this->userStatus;
     }
 
-    public function setUserStatus(?int $userStatus): self
+    public function setUserStatus(?string $userStatus): self
     {
         $this->userStatus = $userStatus;
 
         return $this;
     }
 
-    public function getUserFavorite(): ?array
+    public function getUserFavorite(): ?bool
     {
         return $this->userFavorite;
     }
 
-    public function setUserFavorite(?array $userFavorite): self
+    public function setUserFavorite(?bool $userFavorite): self
     {
         $this->userFavorite = $userFavorite;
 
@@ -127,12 +127,12 @@ class UserElement
         return $this;
     }
 
-    public function getUserProgression(): ?Status
+    public function getUserProgression(): ?int
     {
         return $this->userProgression;
     }
 
-    public function setUserProgression(?Status $userProgression): self
+    public function setUserProgression(?int $userProgression): self
     {
         $this->userProgression = $userProgression;
 
