@@ -48,7 +48,7 @@ class Element
     private $elementDateRelease;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write"])]
+    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementTotalChapter;
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
