@@ -17,11 +17,11 @@ class ElementType
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["elementType:read","elementType:write", "element:read"])]
+    #[Groups(["elementType:read","elementType:write", "element:read","elementUser:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["elementType:read","elementType:write","element:read"])]
+    #[Groups(["elementType:read","elementType:write","element:read","elementUser:read"])]
     private $typeName;
 
     public function getId(): ?int

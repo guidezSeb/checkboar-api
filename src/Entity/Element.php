@@ -57,7 +57,7 @@ class Element
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
+    #[Groups(["element:read","element:write","elementUser:read", "elementType:read"])]
     private $elementType;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
