@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ElementTypeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ElementTypeRepository::class)]
 #[ApiResource]
@@ -16,6 +17,7 @@ class ElementType
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["element:read"])]
     private $typeName;
 
     public function getId(): ?int
