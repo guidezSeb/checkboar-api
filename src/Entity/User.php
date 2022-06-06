@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $plainPassword;
     
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $userImage;
     
 
@@ -78,17 +78,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $userCompleteName;
 
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $userGender;
 
    
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write"])]
+    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $email;
 
     public function __construct()
