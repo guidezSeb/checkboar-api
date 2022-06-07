@@ -95,7 +95,6 @@ class Element
 
     public function __construct()
     {
-        // $this->elementTags = new ArrayCollection();
     }
 
  
@@ -201,37 +200,7 @@ class Element
         return $this;
     }
 
-  
 
-    // /**
-    //  * @return Collection<int, TagsElement>
-    //  */
-    // public function getElementTags(): Collection
-    // {
-    //     return $this->elementTags;
-    // }
-
-    // public function addElementTag(TagsElement $elementTag): self
-    // {
-    //     if (!$this->elementTags->contains($elementTag)) {
-    //         $this->elementTags[] = $elementTag;
-    //         $elementTag->setElementid($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeElementTag(TagsElement $elementTag): self
-    // {
-    //     if ($this->elementTags->removeElement($elementTag)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($elementTag->getElementid() === $this) {
-    //             $elementTag->setElementid(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
 
     public function getElementType(): ?ElementType
     {
