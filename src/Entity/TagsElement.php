@@ -6,10 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TagsElementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TagsElementRepository::class)]
-#[ApiResource]
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['tagElement:read']],
+    'denormalization_context' => ['groups' => ['tagElement:write']],
+])]
 class TagsElement
 {
     #[ORM\Id]
@@ -18,10 +22,12 @@ class TagsElement
     private $id;
 
     #[ORM\ManyToOne(targetEntity: Element::class, inversedBy: 'elementTags')]
+    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
     #[ORM\JoinColumn(nullable: false)]
     private $elementid;
 
     #[ORM\ManyToMany(targetEntity: Tags::class)]
+    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
     private $tagId;
 
     public function __construct()
