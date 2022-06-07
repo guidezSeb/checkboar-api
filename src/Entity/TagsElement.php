@@ -41,6 +41,9 @@ class TagsElement
         return $this->id;
     }
 
+    /**
+     * @return Collection<int, Elements>
+     */
     public function getElementid(): ?Element
     {
         return $this->elementid;
