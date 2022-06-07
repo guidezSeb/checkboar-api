@@ -52,7 +52,7 @@ class Element
     private $elementTotalChapter;
 
     #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
-    #[Groups(["element:read","element:write","tagElement:read"])]
+    #[Groups(["element:read","element:write"])]
     private $elementTags;
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
