@@ -51,9 +51,9 @@ class Element
     #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementTotalChapter;
 
-    #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementTags;
+    // #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
+    // #[Groups(["element:read","element:write"])]
+    // private $elementTags;
 
     #[ORM\ManyToOne(targetEntity: ElementType::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -90,7 +90,7 @@ class Element
 
     public function __construct()
     {
-        $this->elementTags = new ArrayCollection();
+        // $this->elementTags = new ArrayCollection();
     }
 
  
@@ -198,35 +198,35 @@ class Element
 
   
 
-    /**
-     * @return Collection<int, TagsElement>
-     */
-    public function getElementTags(): Collection
-    {
-        return $this->elementTags;
-    }
+    // /**
+    //  * @return Collection<int, TagsElement>
+    //  */
+    // public function getElementTags(): Collection
+    // {
+    //     return $this->elementTags;
+    // }
 
-    public function addElementTag(TagsElement $elementTag): self
-    {
-        if (!$this->elementTags->contains($elementTag)) {
-            $this->elementTags[] = $elementTag;
-            $elementTag->setElementid($this);
-        }
+    // public function addElementTag(TagsElement $elementTag): self
+    // {
+    //     if (!$this->elementTags->contains($elementTag)) {
+    //         $this->elementTags[] = $elementTag;
+    //         $elementTag->setElementid($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeElementTag(TagsElement $elementTag): self
-    {
-        if ($this->elementTags->removeElement($elementTag)) {
-            // set the owning side to null (unless already changed)
-            if ($elementTag->getElementid() === $this) {
-                $elementTag->setElementid(null);
-            }
-        }
+    // public function removeElementTag(TagsElement $elementTag): self
+    // {
+    //     if ($this->elementTags->removeElement($elementTag)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($elementTag->getElementid() === $this) {
+    //             $elementTag->setElementid(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getElementType(): ?ElementType
     {
