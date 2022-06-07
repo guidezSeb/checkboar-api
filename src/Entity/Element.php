@@ -88,6 +88,9 @@ class Element
     #[Groups(["element:read","element:write"])]
     private $elementDuration;
 
+    #[ORM\ManyToMany(targetEntity: Tags::class)]
+    private $elementTags;
+
     public function __construct()
     {
         // $this->elementTags = new ArrayCollection();
@@ -311,6 +314,31 @@ class Element
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Tags>
+     */
+    public function getElementTags(): Collection
+    {
+        return $this->elementTags;
+    }
+
+    public function addElementTag(Tags $elementTag): self
+    {
+        if (!$this->elementTags->contains($elementTag)) {
+            $this->elementTags[] = $elementTag;
+        }
+
+        return $this;
+    }
+
+    public function removeElementTag(Tags $elementTag): self
+    {
+        $this->elementTags->removeElement($elementTag);
+
+        return $this;
+    }
+
 
 
 }
