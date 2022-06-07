@@ -89,6 +89,8 @@ class Element
     private $elementDuration;
 
     #[ORM\ManyToMany(targetEntity: Tags::class)]
+    #[Groups(["element:read","element:write","tag:read"])]
+
     private $elementTags;
 
     public function __construct()

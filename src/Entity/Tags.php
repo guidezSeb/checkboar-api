@@ -17,11 +17,11 @@ class Tags
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["tag:read","tag:write","tagElement:read"])]
+    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["tag:read","tag:write","tagElement:read"])]
+    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
     private $tagName;
 
     public function getId(): ?int
