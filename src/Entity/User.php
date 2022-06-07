@@ -3,151 +3,72 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\SerializedName;
-use App\Controller\GetMyUserController;
-use App\Controller\RegisterController;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['user:read']],
-    'denormalization_context' => ['groups' => ['user:write']],
-], 
-collectionOperations: [
-    'get', 'get_mine' => [
-        'method' => 'GET',
-        'path' => '/users/mine',
-        'controller' => GetMyUserController::class,
-    ],
-    'post', 'post_mine' => [
-        'method' => 'POST',
-        'path' => '/users/mine',
-        'controller' => GetMyUserController::class,
-    ],
-    'post', 'register' => [
-        'method' => 'POST',
-        'path' => '/register',
-        'controller' => RegisterController::class,
-    ],]),]
+#[ApiResource]
 #[ORM\Table(name: "`user`")]
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
     private $id;
 
-   
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
-    private $username;
-
   
-    #[ORM\Column(type: 'json', nullable: true)]
-    #[Groups(["user:read"])]
-    private $roles = [];
+    #[ORM\Column(type: 'string', length: 255)]
+    private $login;
 
- 
-    #[ORM\Column(type: 'string')]
-    #[Groups(["user:read"])]
+    #[ORM\Column(type: 'string', length: 255)]
     private $password;
 
-    #[Groups(["user:read","user:write"])]
-    #[SerializedName('password')]
-    private $plainPassword;
-    
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
+    #[ORM\Column(type: 'string', length: 255)]
     private $userImage;
-    
 
-    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Comment::class, orphanRemoval: true)]
-    private $userComment;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $idFriend;
 
-    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: UserElement::class, orphanRemoval: true)]
+  
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
+    private $comments;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserElement::class, orphanRemoval: true)]
     private $userElements;
-
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
-    private $userCompleteName;
-
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
-    private $userGender;
-
-   
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["user:read", "user:write","elementUser:read"])]
-    private $email;
 
     public function __construct()
     {
-        $this->userComment = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         $this->userElements = new ArrayCollection();
     }
-
+ 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function setId(int $id): self
     {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
+        $this->id = $id;
 
         return $this;
     }
 
- 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
+    public function getLogin(): ?string
     {
-        return (string) $this->username;
+        return $this->login;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function setLogin(string $login): self
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
+        $this->login = $login;
 
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -158,7 +79,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 
     public function getUserImage(): ?string
     {
@@ -172,40 +92,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
+    public function getIdFriend(): ?int
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        $this->plainPassword = null;
+        return $this->idFriend;
+    }
+
+    public function setIdFriend(int $idFriend): self
+    {
+        $this->idFriend = $idFriend;
+
+        return $this;
     }
 
 
     /**
      * @return Collection<int, Comment>
      */
-    public function getUserComment(): Collection
+    public function getComments(): Collection
     {
-        return $this->userComment;
+        return $this->comments;
     }
 
-    public function addUserComment(Comment $userComment): self
+    public function addComment(Comment $comment): self
     {
-        if (!$this->userComment->contains($userComment)) {
-            $this->userComment[] = $userComment;
-            $userComment->setUserId($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeUserComment(Comment $userComment): self
+    public function removeComment(Comment $comment): self
     {
-        if ($this->userComment->removeElement($userComment)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($userComment->getUserId() === $this) {
-                $userComment->setUserId(null);
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
             }
         }
 
@@ -224,7 +147,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->userElements->contains($userElement)) {
             $this->userElements[] = $userElement;
-            $userElement->setUserId($this);
+            $userElement->setUser($this);
         }
 
         return $this;
@@ -234,64 +157,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->userElements->removeElement($userElement)) {
             // set the owning side to null (unless already changed)
-            if ($userElement->getUserId() === $this) {
-                $userElement->setUserId(null);
+            if ($userElement->getUser() === $this) {
+                $userElement->setUser(null);
             }
         }
 
         return $this;
     }
-
-    public function getUserCompleteName(): ?string
-    {
-        return $this->userCompleteName;
-    }
-
-    public function setUserCompleteName(?string $userCompleteName): self
-    {
-        $this->userCompleteName = $userCompleteName;
-
-        return $this;
-    }
-
- 
-
-    public function getUserGender(): ?string
-    {
-        return $this->userGender;
-    }
-
-    public function setUserGender(?string $userGender): self
-    {
-        $this->userGender = $userGender;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword): self
-    {
-        $this->plainPassword = $plainPassword;
-
-        return $this;
-    }
-
-
-
 }

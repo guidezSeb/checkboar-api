@@ -2,126 +2,106 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ElementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: ElementRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['element:read']],
-    'denormalization_context' => ['groups' => ['element:write']],
-])]
+#[ApiResource]
 class Element
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["element:read","element:write","tagElement:read","elementUser:read"])]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["element:read","element:write","tagElement:read","elementUser:read"])]
-    private $ElementName;
+    #[ORM\Column(type: 'integer')]
+    private $elementId;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    #[Groups(["element:read","element:write"])]
+    #[ORM\Column(type: 'string', length: 255)]
+    private $elementName;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $elementAuthor;
+
+    #[ORM\Column(type: 'string', length: 255)]
     private $elementDescription;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["element:read","element:write"])]
     private $elementStatus;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $elementIsFavorite;
+
+    #[ORM\Column(type: 'string', length: 255)]
     private $elementCoverImage;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementRelation;
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $elementRelation = [];
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $elementTag = [];
 
     #[ORM\Column(type: 'date', nullable: true)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
     private $elementDateRelease;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
-    private $elementTotalChapter;
+    #[ORM\OneToMany(mappedBy: 'element', targetEntity: UserElement::class, orphanRemoval: true)]
+    private $userElements;
 
-    // #[ORM\OneToMany(mappedBy: 'elementid', targetEntity: TagsElement::class, orphanRemoval: true)]
-    // #[Groups(["element:read","element:write"])]
-    // private $elementTags;
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Book::class, cascade: ['persist', 'remove'])]
+    private $book;
 
-    #[ORM\ManyToOne(targetEntity: ElementType::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["element:read","element:write","elementUser:read", "elementType:read"])]
-    private $elementType;
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Movie::class, cascade: ['persist', 'remove'])]
+    private $movie;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
-    private $elementNationality;
-
-    #[ORM\ManyToOne(targetEntity: Format::class)]
-    #[Groups(["element:read","element:write"])]
-    private $elementFormat;
-
-    #[ORM\ManyToOne(targetEntity: Author::class)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
-    private $elementAuthor;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementUserScored;
-
-    #[ORM\Column(type: 'float', nullable: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementSumScore;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementCountUser;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(["element:read","element:write"])]
-    private $elementDuration;
-
-    #[ORM\ManyToMany(targetEntity: Tags::class)]
-    #[Groups(["element:read","element:write","tag:read"])]
-
-    private $elementTags;
+    #[ORM\OneToOne(mappedBy: 'element', targetEntity: Manga::class, cascade: ['persist', 'remove'])]
+    private $manga;
 
     public function __construct()
     {
+        $this->userElements = new ArrayCollection();
     }
 
- 
+   
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getElementName(): ?string
+    public function getElementId(): ?int
     {
-        return $this->ElementName;
+        return $this->elementId;
     }
 
-    public function setElementName(string $ElementName): self
+    public function setElementId(int $elementId): self
     {
-        $this->ElementName = $ElementName;
+        $this->elementId = $elementId;
 
         return $this;
     }
 
-    public function getElementAuthor(): ?Author
+    public function getElementName(): ?string
+    {
+        return $this->elementName;
+    }
+
+    public function setElementName(string $elementName): self
+    {
+        $this->elementName = $elementName;
+
+        return $this;
+    }
+
+    public function getElementAuthor(): ?string
     {
         return $this->elementAuthor;
     }
 
-    public function setElementAuthor(?Author $elementAuthor): self
+    public function setElementAuthor(?string $elementAuthor): self
     {
         $this->elementAuthor = $elementAuthor;
 
@@ -133,7 +113,7 @@ class Element
         return $this->elementDescription;
     }
 
-    public function setElementDescription(?string $elementDescription): self
+    public function setElementDescription(string $elementDescription): self
     {
         $this->elementDescription = $elementDescription;
 
@@ -152,29 +132,54 @@ class Element
         return $this;
     }
 
+    public function getElementIsFavorite(): ?bool
+    {
+        return $this->elementIsFavorite;
+    }
+
+    public function setElementIsFavorite(?bool $elementIsFavorite): self
+    {
+        $this->elementIsFavorite = $elementIsFavorite;
+
+        return $this;
+    }
+
     public function getElementCoverImage(): ?string
     {
         return $this->elementCoverImage;
     }
 
-    public function setElementCoverImage(?string $elementCoverImage): self
+    public function setElementCoverImage(string $elementCoverImage): self
     {
         $this->elementCoverImage = $elementCoverImage;
 
         return $this;
     }
 
-    public function getElementRelation(): ?int
+    public function getElementRelation(): ?array
     {
         return $this->elementRelation;
     }
 
-    public function setElementRelation(?int $elementRelation): self
+    public function setElementRelation(?array $elementRelation): self
     {
         $this->elementRelation = $elementRelation;
 
         return $this;
     }
+
+    public function getElementTag(): ?array
+    {
+        return $this->elementTag;
+    }
+
+    public function setElementTag(?array $elementTag): self
+    {
+        $this->elementTag = $elementTag;
+
+        return $this;
+    }
+
     public function getElementDateRelease(): ?\DateTimeInterface
     {
         return $this->elementDateRelease;
@@ -187,129 +192,85 @@ class Element
         return $this;
     }
 
-
-    public function getElementTotalChapter(): ?int
-    {
-        return $this->elementTotalChapter;
-    }
-
-    public function setElementTotalChapter(?int $elementTotalChapter): self
-    {
-        $this->elementTotalChapter = $elementTotalChapter;
-
-        return $this;
-    }
-
-
-
-    public function getElementType(): ?ElementType
-    {
-        return $this->elementType;
-    }
-
-    public function setElementType(?ElementType $elementType): self
-    {
-        $this->elementType = $elementType;
-
-        return $this;
-    }
-
-    public function getElementNationality(): ?string
-    {
-        return $this->elementNationality;
-    }
-
-    public function setElementNationality(?string $elementNationality): self
-    {
-        $this->elementNationality = $elementNationality;
-
-        return $this;
-    }
-
-    public function getElementFormat(): ?Format
-    {
-        return $this->elementFormat;
-    }
-
-    public function setElementFormat(?Format $elementFormat): self
-    {
-        $this->elementFormat = $elementFormat;
-
-        return $this;
-    }
-
-    public function getElementUserScored(): ?int
-    {
-        return $this->elementUserScored;
-    }
-
-    public function setElementUserScored(?int $elementUserScored): self
-    {
-        $this->elementUserScored = $elementUserScored;
-
-        return $this;
-    }
-
-    public function getElementSumScore(): ?float
-    {
-        return $this->elementSumScore;
-    }
-
-    public function setElementSumScore(?float $elementSumScore): self
-    {
-        $this->elementSumScore = $elementSumScore;
-
-        return $this;
-    }
-
-    public function getElementCountUser(): ?int
-    {
-        return $this->elementCountUser;
-    }
-
-    public function setElementCountUser(?int $elementCountUser): self
-    {
-        $this->elementCountUser = $elementCountUser;
-
-        return $this;
-    }
-
-    public function getElementDuration(): ?int
-    {
-        return $this->elementDuration;
-    }
-
-    public function setElementDuration(?int $elementDuration): self
-    {
-        $this->elementDuration = $elementDuration;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Tags>
+     * @return Collection<int, UserElement>
      */
-    public function getElementTags(): Collection
+    public function getUserElements(): Collection
     {
-        return $this->elementTags;
+        return $this->userElements;
     }
 
-    public function addElementTag(Tags $elementTag): self
+    public function addUserElement(UserElement $userElement): self
     {
-        if (!$this->elementTags->contains($elementTag)) {
-            $this->elementTags[] = $elementTag;
+        if (!$this->userElements->contains($userElement)) {
+            $this->userElements[] = $userElement;
+            $userElement->setElement($this);
         }
 
         return $this;
     }
 
-    public function removeElementTag(Tags $elementTag): self
+    public function removeUserElement(UserElement $userElement): self
     {
-        $this->elementTags->removeElement($elementTag);
+        if ($this->userElements->removeElement($userElement)) {
+            // set the owning side to null (unless already changed)
+            if ($userElement->getElement() === $this) {
+                $userElement->setElement(null);
+            }
+        }
 
         return $this;
     }
 
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
 
+    public function setBook(Book $book): self
+    {
+        // set the owning side of the relation if necessary
+        if ($book->getElement() !== $this) {
+            $book->setElement($this);
+        }
+
+        $this->book = $book;
+
+        return $this;
+    }
+
+    public function getMovie(): ?Movie
+    {
+        return $this->movie;
+    }
+
+    public function setMovie(Movie $movie): self
+    {
+        // set the owning side of the relation if necessary
+        if ($movie->getElement() !== $this) {
+            $movie->setElement($this);
+        }
+
+        $this->movie = $movie;
+
+        return $this;
+    }
+
+    public function getManga(): ?Manga
+    {
+        return $this->manga;
+    }
+
+    public function setManga(Manga $manga): self
+    {
+        // set the owning side of the relation if necessary
+        if ($manga->getElement() !== $this) {
+            $manga->setElement($this);
+        }
+
+        $this->manga = $manga;
+
+        return $this;
+    }
 
 }
