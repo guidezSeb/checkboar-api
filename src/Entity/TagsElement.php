@@ -22,12 +22,12 @@ class TagsElement
     private $id;
 
     #[ORM\ManyToOne(targetEntity: Element::class, inversedBy: 'elementTags')]
-    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
+    #[Groups(["tag:read","tagElement:write","tagElement:read","element:read"])]
     #[ORM\JoinColumn(nullable: false)]
     private $elementid;
 
     #[ORM\ManyToMany(targetEntity: Tags::class)]
-    #[Groups(["tag:read","tag:write","tagElement:read","element:read"])]
+    #[Groups(["tag:read","tagElement:write","tagElement:read","element:read"])]
     private $tagId;
 
     public function __construct()

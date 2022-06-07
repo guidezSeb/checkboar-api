@@ -20,11 +20,11 @@ class Element
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["element:read","element:write","elementUser:read"])]
+    #[Groups(["element:read","element:write","tagElement:read","elementUser:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["element:read","element:write","elementUser:read"])]
+    #[Groups(["element:read","element:write","tagElement:read","elementUser:read"])]
     private $ElementName;
 
     #[ORM\Column(type: 'text', nullable: true)]
